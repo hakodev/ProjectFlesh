@@ -691,7 +691,7 @@ GameObject:
   - component: {fileID: 1424372671}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -861,6 +861,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12de858de2686b04e92a227abd6658c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 0
+  jumpForce: 0
 --- !u!1 &1557467562
 GameObject:
   m_ObjectHideFlags: 0
