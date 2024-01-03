@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace InteractableEnviorment
 {
-    public abstract class InteractableObject : MonoBehaviour
+    public abstract class InteractionBehaviour : MonoBehaviour
     {
         public abstract void StartInteracting();
         public abstract void StopInteracting();

@@ -4,14 +4,13 @@ using UnityEngine;
 using UnityEngine.Events;
 namespace InteractableEnviorment
 {
-    public class DistanceTrigger : InteractableTrigger
+    public class DistanceTrigger : InteractionTrigger
     {
         [SerializeField]
-        private float range;
+        private float range=1;
 
         bool playerInRange;
-        [Header("Connect to desired interactable object")]
-        public UnityEvent OnEnterRange, OnExitRange;
+       
 
 
         PlayerController player;
@@ -30,7 +29,7 @@ namespace InteractableEnviorment
             if (Mathf.Abs(player.transform.position.x-transform.position.x)<=range){
                 if (!playerInRange)
                 {
-                    OnEnterRange?.Invoke();
+                    ActivateTrigger();
                     playerInRange = true;
 
                 }
@@ -40,7 +39,7 @@ namespace InteractableEnviorment
             {
                 if (playerInRange)
                 {
-                    OnExitRange?.Invoke(); 
+                    DeactivateTrigger();
 
                     playerInRange = false;
 
