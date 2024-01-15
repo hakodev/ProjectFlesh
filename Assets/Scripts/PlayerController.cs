@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
@@ -6,17 +7,24 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float jumpForce;
     private float horizontalAxis;
     private bool jumpPressed;
+    private int jumpsRemaining;
     private bool isGrounded;
+    private const int maxJumps = 2;
 
     private void Awake() {
         rb2d = GetComponent<Rigidbody2D>();
     }
 
+    private void Start() {
+        jumpsRemaining = maxJumps;
+    }
+
     private void Update() {
         horizontalAxis = Input.GetAxisRaw("Horizontal");
         jumpPressed = Input.GetButtonDown("Jump");
-        if(jumpPressed && isGrounded) {
-            rb2d.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+
+        if(jumpPressed && (isGrounded || jumpsRemaining > 0)) {
+            Jump();
         }
     }
 
@@ -27,6 +35,7 @@ public class PlayerController : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision) {
         if(collision.gameObject.CompareTag("Ground")) {
             isGrounded = true;
+            jumpsRemaining = maxJumps;
         }
     }
 
@@ -34,5 +43,11 @@ public class PlayerController : MonoBehaviour {
         if(collision.gameObject.CompareTag("Ground")) {
             isGrounded = false;
         }
+    }
+
+    private void Jump() {
+        rb2d.velocity = new Vector2(rb2d.velocity.x, 0f); // Zero out the vertical velocity before jump
+        rb2d.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+        jumpsRemaining--;
     }
 }
