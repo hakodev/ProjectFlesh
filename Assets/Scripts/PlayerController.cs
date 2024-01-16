@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
@@ -10,6 +11,7 @@ public class PlayerController : MonoBehaviour {
     private int jumpsRemaining;
     private bool isGrounded;
     private bool isTouchingWall;
+    private int wallDirection;
     private const int maxJumps = 2;
 
     private void Awake() {
@@ -34,7 +36,10 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        rb2d.velocity = new Vector2(horizontalAxis * moveSpeed, rb2d.velocity.y);
+        // Check if currently wall jumping, if so, skip setting X-axis velocity
+        if(!(jumpPressed && !isGrounded && isTouchingWall)) {
+            rb2d.velocity = new Vector2(horizontalAxis * moveSpeed, rb2d.velocity.y);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
@@ -43,6 +48,8 @@ public class PlayerController : MonoBehaviour {
             jumpsRemaining = maxJumps;
         } else if(collision.gameObject.CompareTag("Wall")) {
             isTouchingWall = true;
+            // Check if the wall is on the right or left (returns 1 if on the left, -1 if on the right)
+            wallDirection = (int)Mathf.Sign(transform.position.x - collision.gameObject.transform.position.x);
         }
     }
 
@@ -63,7 +70,7 @@ public class PlayerController : MonoBehaviour {
 
     private void WallJump() {
         rb2d.velocity = new Vector2(0f, 0f); // Zero out the velocity before wall jump
-        rb2d.AddForce(new Vector2(-horizontalAxis * wallJumpForce, jumpForce), ForceMode2D.Impulse);
+        rb2d.AddForce(new Vector2(wallDirection * wallJumpForce, jumpForce), ForceMode2D.Impulse);
         jumpsRemaining = maxJumps - 1;
     }
 }
