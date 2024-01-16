@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
     private Rigidbody2D rb2d;
-    [SerializeField] private float moveSpeed;
+    [SerializeField] private float moveSpeed=15f;
     [SerializeField] private float jumpForce;
     [SerializeField] private float wallJumpForce;
+    [SerializeField] private float stopTime=0.2f;
     private float horizontalAxis;
     private bool jumpPressed;
     private int jumpsRemaining;
@@ -13,7 +14,7 @@ public class PlayerController : MonoBehaviour {
     private bool isTouchingWall;
     private int wallDirection;
     private const int maxJumps = 2;
-
+    
     private void Awake() {
         rb2d = GetComponent<Rigidbody2D>();
     }
@@ -37,9 +38,9 @@ public class PlayerController : MonoBehaviour {
 
     private void FixedUpdate() {
         // Check if currently wall jumping, if so, skip setting X-axis velocity
-        if(!(jumpPressed && !isGrounded && isTouchingWall)) {
-            rb2d.velocity = new Vector2(horizontalAxis * moveSpeed, rb2d.velocity.y);
-        }
+        rb2d.AddForce(new Vector2(horizontalAxis * moveSpeed,0),ForceMode2D.Force);
+        rb2d.AddForce(new Vector2(-rb2d.velocity.x, 0)*(1/stopTime));
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
@@ -73,4 +74,6 @@ public class PlayerController : MonoBehaviour {
         rb2d.AddForce(new Vector2(wallDirection * wallJumpForce, jumpForce), ForceMode2D.Impulse);
         jumpsRemaining = maxJumps - 1;
     }
+
+    
 }
