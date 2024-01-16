@@ -54,6 +54,7 @@ public class PlayerInteraction : MonoBehaviour
             rb.isKinematic = true;
         }
         item.transform.DOMoveInTargetLocalSpace(holdTransform, Vector3.zero, 0.5f);
+        item.transform.DORotate(Vector3.zero, 0.5f);
         currentlyHolding = item;
         await Task.Delay(500);
         if (rb != null)

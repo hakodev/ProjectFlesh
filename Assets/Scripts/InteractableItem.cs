@@ -9,16 +9,19 @@ public class InteractableItem : MonoBehaviour
     public ItemData itemData;
     [HideInInspector]
     public bool holding = false;
-    public TextMeshProUGUI infoDisplay;
     public GameObject light;
     public UnityEvent<int> OnSoundPlayed;
 
     public virtual void Start()
     {
-        infoDisplay.text = itemData.itemInfoString;
+        OnSoundPlayed.AddListener(SoundClipManager.instance.OnSoundPlayedByInteraction);
     }
-    public virtual void Interact(InteractableItem item)
+    public virtual void Interact(InteractableItem item=null)
     {
+        if (item == null)
+        {
+           //player interaction
+        }
         foreach (Interaction interaction in itemData.interactions)
         {
             if (interaction.interactionTarget == item.itemData)
@@ -27,8 +30,16 @@ public class InteractableItem : MonoBehaviour
                 {
                     OnSoundPlayed?.Invoke(interaction.audioClipID);
                 }
+                if (interaction.interactionType == Interaction.InteractionType.ProduceItem)
+                {
+                    Instantiate(interaction.itemProduct,item.transform.position,Quaternion.identity);
+                    Destroy(item.gameObject);
+                }
+                FindObjectOfType<SanityManager>().SanityChange(interaction.sanityChangeAmount);
             }
         }
+
+        Destroy(this.gameObject);
     }
 
     public void Hold()
@@ -43,13 +54,11 @@ public class InteractableItem : MonoBehaviour
     }
     public void HoverStart()
     {
-        infoDisplay.gameObject.SetActive(true);
         light.SetActive(true);
     }
 
     public void HoverEnd()
     {
-        infoDisplay.gameObject.SetActive(false);
         light.SetActive(false);
 
     }
@@ -69,5 +78,6 @@ public class Interaction
     public int audioClipID;
     [Header("Use if interaction type is ProduceItem")]
     public InteractableItem itemProduct;
+    public float sanityChangeAmount;
 
 }
