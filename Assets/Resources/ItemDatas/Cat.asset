@@ -19,4 +19,4 @@ MonoBehaviour:
     itemProduct: {fileID: 0}
     sanityChangeAmount: 30
   itemInfoString: 
-  holdable: 0
+  holdable: 1

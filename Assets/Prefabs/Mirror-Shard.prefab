@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8351708389453162201}
   - component: {fileID: 7347293718492610442}
   - component: {fileID: 141697028099464980}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mirror-Shard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -193,7 +193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 282186831920347762}
   - component: {fileID: 5842511422503142996}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +277,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7538311700599807419}
   - component: {fileID: 7745110312499658613}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Light 2D (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,8 +333,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.000050008297, y: -0.000100016594, z: 0}
-    m_Extent: {x: 1.42575, y: 1.4259, z: 0}
+    m_Center: {x: 0, y: -0.0019000173, z: 0}
+    m_Extent: {x: 1.426, y: 1.4279001, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -428,6 +428,10 @@ PrefabInstance:
     - target: {fileID: 8982006214803018856, guid: f8dc0a466c115dc4dbd221f7a69617e9, type: 3}
       propertyPath: m_Name
       value: Bloody Particle
+      objectReference: {fileID: 0}
+    - target: {fileID: 8982006214803018856, guid: f8dc0a466c115dc4dbd221f7a69617e9, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8982006214803018856, guid: f8dc0a466c115dc4dbd221f7a69617e9, type: 3}
       propertyPath: m_IsActive

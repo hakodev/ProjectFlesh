@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactions: []
   itemInfoString: 
-  holdable: 1
+  holdable: 0

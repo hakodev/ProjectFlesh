@@ -18,6 +18,9 @@ public class GlassShard : InteractableItem
 
             bloodParticle.transform.position = item.transform.position;
             bloodParticle.Play();
+            OnSoundPlayed?.Invoke(sound);
+
+            FindObjectOfType<PlayerInteraction>().currentlyHovering = null;
             Destroy(item.gameObject);
             return;
         }
@@ -32,8 +35,12 @@ public class GlassShard : InteractableItem
                 if (interaction.interactionType == Interaction.InteractionType.ProduceItem)
                 {
                     Instantiate(interaction.itemProduct, item.transform.position, Quaternion.identity);
+
                     Destroy(item.gameObject);
+                    FindObjectOfType<PlayerInteraction>().currentlyHovering = null;
+
                 }
+                Debug.Log(interaction.sanityChangeAmount);
                 FindObjectOfType<SanityManager>().SanityChange(interaction.sanityChangeAmount);
             }
         }

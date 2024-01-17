@@ -22,8 +22,11 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (currentlyHovering != null && currentlyHolding==null)
             {
+                Debug.Log("1");
                 if (currentlyHovering.itemData.holdable)
                 {
+                    Debug.Log("1");
+
                     currentlyHovering.Hold();
                     Hold(currentlyHovering);
                 }
@@ -112,6 +115,10 @@ public class PlayerInteraction : MonoBehaviour
         }
         else
         {
+            if (currentlyHovering == null)
+            {
+                Debug.Log("ss");
+            }
             currentlyHovering?.HoverEnd();
 
             currentlyHovering = null;

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6338262161110301155}
   - component: {fileID: 8783649027175385249}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6694910151174141053}
   - component: {fileID: 214237300666287195}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Light 2D (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 3452516031274205075}
   - component: {fileID: 4333509917141486121}
   - component: {fileID: 2898567318302452013}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,7 +357,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

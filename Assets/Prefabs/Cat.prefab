@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 592902158983204921}
   - component: {fileID: 157481176004282868}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 2087836318395598374}
   - component: {fileID: 8302872592935920598}
   - component: {fileID: 3029604902541746890}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -273,7 +273,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7486793641109917474}
   - component: {fileID: 5409159954529675190}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Light 2D (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

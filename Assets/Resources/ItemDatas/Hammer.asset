@@ -16,7 +16,12 @@ MonoBehaviour:
   - interactionTarget: {fileID: 11400000, guid: 5b3e2f264be0f9f4b909b830b5580895, type: 2}
     interactionType: 1
     audioClipID: 0
-    itemProduct: {fileID: 1144030071316048392, guid: 2e22f07f99ab7b241b25f8a64ceedeb8, type: 3}
-    sanityChangeAmount: 45
+    itemProduct: {fileID: 141697028099464980, guid: 2e22f07f99ab7b241b25f8a64ceedeb8, type: 3}
+    sanityChangeAmount: -45
+  - interactionTarget: {fileID: 11400000, guid: 2711b6b7e13c9d24c833af8a837cc3a2, type: 2}
+    interactionType: 0
+    audioClipID: 1
+    itemProduct: {fileID: 141697028099464980, guid: 2e22f07f99ab7b241b25f8a64ceedeb8, type: 3}
+    sanityChangeAmount: -10
   itemInfoString: 
-  holdable: 0
+  holdable: 1

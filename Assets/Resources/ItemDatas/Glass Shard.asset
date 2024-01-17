@@ -15,8 +15,8 @@ MonoBehaviour:
   interactions:
   - interactionTarget: {fileID: 11400000, guid: 2711b6b7e13c9d24c833af8a837cc3a2, type: 2}
     interactionType: 0
-    audioClipID: 5
+    audioClipID: 2
     itemProduct: {fileID: 0}
-    sanityChangeAmount: 45
+    sanityChangeAmount: -45
   itemInfoString: 
-  holdable: 0
+  holdable: 1

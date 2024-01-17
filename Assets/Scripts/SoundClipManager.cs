@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class SoundClipManager : MonoBehaviour
 {
     public List<AudioClip> audioClips = new List<AudioClip>();
     public static SoundClipManager instance;
     public AudioSource audioSource;
-
+    public TextMeshProUGUI t1, t2;
     public int levelClipAudio;
     private void Awake()
     {
@@ -31,13 +31,14 @@ public class SoundClipManager : MonoBehaviour
         PlaySound(id);
         if (levelClipAudio == id)
         {
-
+            WinGame();
         }
     }
 
     public void WinGame()
     {
-
+        t1.gameObject.SetActive(true);
+        t2.gameObject.SetActive(true);
     }
 
 

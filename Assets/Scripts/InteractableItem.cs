@@ -18,6 +18,7 @@ public class InteractableItem : MonoBehaviour
     }
     public virtual void Interact(InteractableItem item=null)
     {
+        bool itemWillDestroyed = false;
         if (item == null)
         {
            //player interaction
@@ -33,13 +34,22 @@ public class InteractableItem : MonoBehaviour
                 if (interaction.interactionType == Interaction.InteractionType.ProduceItem)
                 {
                     Instantiate(interaction.itemProduct,item.transform.position,Quaternion.identity);
-                    Destroy(item.gameObject);
+                    OnSoundPlayed?.Invoke(interaction.audioClipID);
+
+                    itemWillDestroyed = true;
                 }
+                Debug.Log(interaction.sanityChangeAmount);
+
                 FindObjectOfType<SanityManager>().SanityChange(interaction.sanityChangeAmount);
             }
         }
 
-        Destroy(this.gameObject);
+        if (itemWillDestroyed)
+        {
+            Destroy(item.gameObject);
+            FindObjectOfType<PlayerInteraction>().currentlyHovering = null;
+            
+        }
     }
 
     public void Hold()
