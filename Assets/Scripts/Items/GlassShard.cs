@@ -6,7 +6,8 @@ public class GlassShard : InteractableItem
 {
     public ItemData catItemData;
     public ParticleSystem bloodParticle;
-    public int sound;
+
+    /*
     public override void Interact(InteractableItem item = null)
     {
         if (item == null)
@@ -18,7 +19,6 @@ public class GlassShard : InteractableItem
 
             bloodParticle.transform.position = item.transform.position;
             bloodParticle.Play();
-            OnSoundPlayed?.Invoke(sound);
 
             FindObjectOfType<PlayerInteraction>().currentlyHovering = null;
             Destroy(item.gameObject);
@@ -30,7 +30,7 @@ public class GlassShard : InteractableItem
             {
                 if (interaction.interactionType == Interaction.InteractionType.ProduceSound)
                 {
-                    OnSoundPlayed?.Invoke(interaction.audioClipID);
+                    OnSoundPlayed?.Invoke(interaction.ActionID);
                 }
                 if (interaction.interactionType == Interaction.InteractionType.ProduceItem)
                 {
@@ -47,4 +47,5 @@ public class GlassShard : InteractableItem
 
         Destroy(this.gameObject);
     }
+    */
 }

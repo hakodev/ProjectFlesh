@@ -10,37 +10,33 @@ public class InteractableItem : MonoBehaviour
     [HideInInspector]
     public bool holding = false;
     public GameObject light;
-    public UnityEvent<int> OnSoundPlayed;
+    public UnityEvent<int> OnAction;
 
     public virtual void Start()
     {
-        OnSoundPlayed.AddListener(SoundClipManager.instance.OnSoundPlayedByInteraction);
+
     }
-    public virtual void Interact(InteractableItem item=null)
+    public virtual void Interact(InteractableItem item = null)
     {
         bool itemWillDestroyed = false;
         if (item == null)
         {
-           //player interaction
+            //player interaction
         }
         foreach (Interaction interaction in itemData.interactions)
         {
             if (interaction.interactionTarget == item.itemData)
             {
-                if (interaction.interactionType == Interaction.InteractionType.ProduceSound)
+                if (interaction.itemProduct != null)
                 {
-                    OnSoundPlayed?.Invoke(interaction.audioClipID);
-                }
-                if (interaction.interactionType == Interaction.InteractionType.ProduceItem)
-                {
-                    Instantiate(interaction.itemProduct,item.transform.position,Quaternion.identity);
-                    OnSoundPlayed?.Invoke(interaction.audioClipID);
-
+                    Instantiate(interaction.itemProduct, item.transform.position, Quaternion.identity);
                     itemWillDestroyed = true;
+                    Debug.Log(interaction.sanityChangeAmount);
                 }
-                Debug.Log(interaction.sanityChangeAmount);
 
-                FindObjectOfType<SanityManager>().SanityChange(interaction.sanityChangeAmount);
+
+                OnAction?.Invoke(interaction.ActionID);
+
             }
         }
 
@@ -48,7 +44,7 @@ public class InteractableItem : MonoBehaviour
         {
             Destroy(item.gameObject);
             FindObjectOfType<PlayerInteraction>().currentlyHovering = null;
-            
+
         }
     }
 
@@ -82,11 +78,7 @@ public class InteractableItem : MonoBehaviour
 public class Interaction
 {
     public ItemData interactionTarget;
-    public enum InteractionType { ProduceSound, ProduceItem };
-    public InteractionType interactionType;
-    [Header("Use if interaction type is ProduceSound")]
-    public int audioClipID;
-    [Header("Use if interaction type is ProduceItem")]
+    public int ActionID;
     public InteractableItem itemProduct;
     public float sanityChangeAmount;
 
