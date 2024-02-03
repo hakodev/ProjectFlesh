@@ -34,7 +34,13 @@ public class QuestSystem : MonoBehaviour
     }
     private void Start()
     {
+    }
+
+    public void Initialize()
+    {
+        selectedQuests.Clear();
         selectedQuests = GetRandomQuest(3);
+
     }
     public List<QuestData> GetRandomQuest(int amount)
     {
@@ -51,6 +57,10 @@ public class QuestSystem : MonoBehaviour
 
     public void CreateQuestObjects()
     {
+        foreach(QuestObjectUI g in questUIObjects)
+        {
+            Destroy(g.gameObject);
+        }
         questUIObjects.Clear();
         foreach(QuestData q in selectedQuests)
         {

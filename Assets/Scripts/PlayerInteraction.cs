@@ -22,13 +22,17 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (currentlyHovering != null && currentlyHolding==null)
             {
-                Debug.Log("1");
                 if (currentlyHovering.itemData.holdable)
                 {
-                    Debug.Log("1");
 
                     currentlyHovering.Hold();
                     Hold(currentlyHovering);
+                }
+                else
+                {
+                    InteractableItem item =Instantiate(currentlyHolding.itemProduct,currentlyHolding.transform.position,Quaternion.identity);
+                    item.Hold();
+                    Hold(item);
                 }
             }
             else if (currentlyHovering!=null && currentlyHolding != null) 

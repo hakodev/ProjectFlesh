@@ -12,10 +12,8 @@ public class InteractableItem : MonoBehaviour
     public GameObject light;
     public UnityEvent<int> OnAction;
 
-    public virtual void Start()
-    {
-
-    }
+    public InteractableItem itemProduct;
+    
     public virtual void Interact(InteractableItem item = null)
     {
         bool itemWillDestroyed = false;
@@ -31,7 +29,6 @@ public class InteractableItem : MonoBehaviour
                 {
                     Instantiate(interaction.itemProduct, item.transform.position, Quaternion.identity);
                     itemWillDestroyed = true;
-                    Debug.Log(interaction.sanityChangeAmount);
                 }
 
 
