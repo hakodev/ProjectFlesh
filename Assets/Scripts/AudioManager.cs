@@ -6,15 +6,15 @@ public class AudioManager : MonoBehaviour {
     #region Audio dump
 
     [field: Header("Music")] // Add music below
-    [field: SerializeField] public AudioClip GameplayAmbienceLoop { get; private set; }
+    [field: SerializeField] public AudioClip GameplayAmbienceLoop { get; }
 
     [field: Header("SFX")] // Add sfx below
-    [field: SerializeField] public AudioClip BoneBreaking { get; private set; }
-    [field: SerializeField] public AudioClip CatStab { get; private set; }
-    [field: SerializeField] public AudioClip GlassShatter { get; private set; }
-    [field: SerializeField] public AudioClip HammerHitCat { get; private set; }
-    [field: SerializeField] public AudioClip HeartbeatLoopFaster { get; private set; }
-    [field: SerializeField] public AudioClip HeartbeatLoop { get; private set; }
+    [field: SerializeField] public AudioClip BoneBreaking { get; }
+    [field: SerializeField] public AudioClip CatStab { get; }
+    [field: SerializeField] public AudioClip GlassShatter { get; }
+    [field: SerializeField] public AudioClip HammerHitCat { get; }
+    [field: SerializeField] public AudioClip HeartbeatLoopFaster { get; }
+    [field: SerializeField] public AudioClip HeartbeatLoop { get; }
 
     [Header("Audio players")]
     [SerializeField] private AudioSource musicPlayer;
