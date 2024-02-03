@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: ae0f3a86326bbf34faa778d63254d267
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - bedroomDay: {fileID: 21300000, guid: 0589d01105a86d94eaf705f11877b4ba, type: 3}
+  - bedroomNight: {fileID: 21300000, guid: 3bc84f7097f20be43959f79e1aa287fd, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

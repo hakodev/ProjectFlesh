@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CameraBehaviour : MonoBehaviour {
+public class CameraFollowGameplay : MonoBehaviour {
     private const float deadzonePositionLeft = -8.65f;
     private const float deadzonePositionRight = 8.65f;
     private const float deadzonePositionUp = 3.48f;
