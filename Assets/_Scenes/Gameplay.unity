@@ -1668,13 +1668,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d0f9a33c55525d468f9bc66aff73497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <GameplayAmbienceLoop>k__BackingField: {fileID: 8300000, guid: 60ec56867e28e4543be8eab111e14bda, type: 3}
-  <BoneBreaking>k__BackingField: {fileID: 8300000, guid: 898683a557a2c724dac8f4947131ea67, type: 3}
-  <CatStab>k__BackingField: {fileID: 8300000, guid: f0d9e38a2158dd34988229e2f97feaf5, type: 3}
-  <GlassShatter>k__BackingField: {fileID: 8300000, guid: 836d92c49125bc04585db216639dbc29, type: 3}
-  <HammerHitCat>k__BackingField: {fileID: 8300000, guid: 0269895152e6b464a89ac58e947609e6, type: 3}
-  <HeartbeatLoopFaster>k__BackingField: {fileID: 8300000, guid: 4c1140801ae13a24095f84a77c31e89a, type: 3}
-  <HeartbeatLoop>k__BackingField: {fileID: 8300000, guid: 4ab3db76d5fe699479b29fded8de52f0, type: 3}
   musicPlayer: {fileID: 423747312}
   sfxPlayer: {fileID: 894236779}
 --- !u!1 &513033912
@@ -4947,7 +4940,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.9, y: 1.45}
+  m_Size: {x: 3.5, y: 6.5}
   m_Direction: 0
 --- !u!212 &1850874159
 SpriteRenderer:
@@ -4990,12 +4983,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: dc33b054a5ac90246b2b3380df697f6b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2b907bb4d35ca594682a894e9ce21d77, type: 3}
   m_Color: {r: 0.9913222, g: 1, b: 0.6556604, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 23.411753, y: 16.61}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -5010,8 +5003,8 @@ Transform:
   m_GameObject: {fileID: 1850874156}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.25, y: -2.47, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalPosition: {x: -15.25, y: -2.5, z: 0}
+  m_LocalScale: {x: 0.36, y: 0.36, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1040884203}
@@ -5031,7 +5024,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 35
   jumpForce: 5.6
-  wallJumpForce: 10
+  wallJumpForce: 25.7
   stopTime: 0.1
 --- !u!114 &1850874162
 MonoBehaviour:
@@ -5339,7 +5332,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -5364,7 +5357,7 @@ Transform:
   m_GameObject: {fileID: 1969567370}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.65, y: -2.47, z: -10}
+  m_LocalPosition: {x: -8.65, y: -2.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
