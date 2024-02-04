@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
     private Rigidbody2D rb2d;
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
+    private const string PLAYER_IS_WALKING = "isWalking";
     [SerializeField] private float moveSpeed = 15f;
     [SerializeField] private float jumpForce;
     [SerializeField] private float wallJumpForce;
@@ -16,6 +19,8 @@ public class PlayerController : MonoBehaviour {
 
     private void Awake() {
         rb2d = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Start() {
@@ -25,6 +30,13 @@ public class PlayerController : MonoBehaviour {
     private void Update() {
         horizontalAxis = Input.GetAxisRaw("Horizontal");
         jumpPressed = Input.GetButtonDown("Jump");
+
+        if(horizontalAxis < 0)
+            spriteRenderer.flipX = true;
+        else if(horizontalAxis > 0)
+            spriteRenderer.flipX = false;
+
+        animator.SetBool(PLAYER_IS_WALKING, horizontalAxis != 0);
 
         if(jumpPressed) {
             if(!isGrounded && isTouchingWall) {
