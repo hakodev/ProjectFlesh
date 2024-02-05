@@ -33,7 +33,7 @@ public class PlayerInteraction : MonoBehaviour
                     InteractableItem item =Instantiate(currentlyHolding.itemProduct,currentlyHolding.transform.position,Quaternion.identity);
                     item.Hold();
                     Hold(item);
-                }
+                }   
             }
             else if (currentlyHovering!=null && currentlyHolding != null) 
             {

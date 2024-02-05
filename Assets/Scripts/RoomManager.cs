@@ -9,9 +9,5 @@ public class RoomManager : MonoBehaviour
 
 
 
-    public void ApplyHorrorToRoom(Room room)
-    {
-        room.ApplyRandomHorror();
-    }
 
 }

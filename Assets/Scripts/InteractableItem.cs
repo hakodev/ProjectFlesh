@@ -6,6 +6,8 @@ using TMPro;
 
 public class InteractableItem : MonoBehaviour
 {
+
+    public SpriteRenderer dot;
     public ItemData itemData;
     [HideInInspector]
     public bool holding = false;
@@ -13,7 +15,12 @@ public class InteractableItem : MonoBehaviour
     public UnityEvent<int> OnAction;
 
     public InteractableItem itemProduct;
-    
+
+    private void Start()
+    {
+        dot.gameObject.SetActive(true);
+    }
+
     public virtual void Interact(InteractableItem item = null)
     {
         bool itemWillDestroyed = false;
