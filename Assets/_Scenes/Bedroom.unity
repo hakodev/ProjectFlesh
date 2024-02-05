@@ -259,10 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12de858de2686b04e92a227abd6658c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 35
-  jumpForce: 0
-  wallJumpForce: 0
-  stopTime: 0.1
+  moveSpeed: 6.28
 --- !u!212 &145781565
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -573,9 +570,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1451612145}
   - component: {fileID: 1451612146}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: GroundCollider
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -650,9 +647,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1505119706}
   - component: {fileID: 1505119707}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: LeftWallCollider
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
