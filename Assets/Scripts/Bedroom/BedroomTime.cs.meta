@@ -6,6 +6,8 @@ MonoImporter:
   defaultReferences:
   - bedroomDay: {fileID: 21300000, guid: 0589d01105a86d94eaf705f11877b4ba, type: 3}
   - bedroomNight: {fileID: 21300000, guid: 3bc84f7097f20be43959f79e1aa287fd, type: 3}
+  - dayAmbience: {fileID: 21300000, guid: cefb4bd1ff8795d4dadd9dcde61e243e, type: 3}
+  - nightAmbience: {fileID: 21300000, guid: ac8ee4a0839553441b1f5f58f89eb206, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

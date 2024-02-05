@@ -9,7 +9,7 @@ public class InteractableItem : MonoBehaviour
     public ItemData itemData;
     [HideInInspector]
     public bool holding = false;
-    public GameObject light;
+    public GameObject interactionLight;
     public UnityEvent<int> OnAction;
 
     public InteractableItem itemProduct;
@@ -57,12 +57,12 @@ public class InteractableItem : MonoBehaviour
     }
     public void HoverStart()
     {
-        light.SetActive(true);
+        interactionLight.SetActive(true);
     }
 
     public void HoverEnd()
     {
-        light.SetActive(false);
+        interactionLight.SetActive(false);
 
     }
 
