@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 4ba5d89777af0ac4fb973dedf403afe1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - chairEmpty: {fileID: 21300000, guid: 694cbf521ad837a49ac02396d0ef1ea3, type: 3}
+  - chairKid: {fileID: 21300000, guid: 96dd67489c629f64a98477865f8cc3a4, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
