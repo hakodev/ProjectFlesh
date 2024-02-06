@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour {
     [field: Header("SFX")] // Add sfx below
     [field: SerializeField] public AudioClip HeartbeatLoopFaster { get; private set; }
     [field: SerializeField] public AudioClip HeartbeatLoop { get; private set; }
+    [field: SerializeField] public AudioClip MenuClickSFX { get; private set; }
     [field: SerializeField] public AudioClip[] Footsteps { get; private set; }
 
     [Header("Audio players")]
