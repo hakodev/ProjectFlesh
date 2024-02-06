@@ -3,23 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
+using DG.Tweening;
 
 public class Item : Interactable
 {
 
+    public SpriteRenderer dot;
+
     public ItemData itemData;
     [HideInInspector]
     public bool holding = false;
-    public GameObject interactionLight;
     public UnityEvent<int> OnAction;
 
     public Item itemProduct;
 
-    public SpriteRenderer dot;
+
+
+    public Vector3 startPos;
 
 
     private void Start()
     {
+        startPos = transform.position;
         dot.gameObject.SetActive(true);
     }
 
@@ -62,16 +67,32 @@ public class Item : Interactable
     public void Hold()
     {
         holding = true;
+        dot.gameObject.SetActive(false);
+
     }
 
     public void Drop()
     {
         holding = false;
+        transform.DOMove(startPos, 0.5f);
+    }
+
+    public override void HoverStart()
+    {
+        base.HoverStart();
+        dot.gameObject.SetActive(false);
+    }
+
+    public override void HoverEnd()
+    {
+        base.HoverEnd();
+        if (!holding)
+        {
+            dot.gameObject.SetActive(true);
+                
+        }
 
     }
-   
-
-
 }
 
 

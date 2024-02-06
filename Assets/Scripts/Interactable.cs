@@ -11,12 +11,12 @@ public class Interactable : MonoBehaviour
 
     }
 
-    public void HoverStart()
+    public virtual void HoverStart()
     {
         interactText.gameObject.SetActive(true);
     }
 
-    public void HoverEnd()
+    public virtual void HoverEnd()
     {
         interactText.gameObject.SetActive(false);
 

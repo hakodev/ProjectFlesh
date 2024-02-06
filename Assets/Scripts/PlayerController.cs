@@ -17,10 +17,11 @@ public class PlayerController : MonoBehaviour {
     private void Update() {
         horizontalAxis = Input.GetAxisRaw("Horizontal");
 
-        if(horizontalAxis < 0)
-            spriteRenderer.flipX = true;
+        if (horizontalAxis < 0)
+            transform.eulerAngles = new Vector3(0, 180, 0);
         else if(horizontalAxis > 0)
-            spriteRenderer.flipX = false;
+            transform.eulerAngles = new Vector3(0, 0, 0);
+
 
         animator.SetBool(PLAYER_IS_WALKING, horizontalAxis != 0);
     }

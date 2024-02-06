@@ -20,7 +20,7 @@ public class PlayerInteraction : MonoBehaviour
         ItemCheck();
         if (Input.GetKeyDown(KeyCode.E))
         {
-
+            if (currentlyHovering == null) return;
             if (currentlyHovering.TryGetComponent<Item>(out Item i))
             {
                 if (currentlyHovering != null && currentlyHolding == null)
@@ -52,7 +52,7 @@ public class PlayerInteraction : MonoBehaviour
             }
 
 
-
+        }
 
 
 
@@ -71,7 +71,7 @@ public class PlayerInteraction : MonoBehaviour
 
 
         }
-    }
+    
 
     public async void HoldItem(Item item)
     {
@@ -83,14 +83,10 @@ public class PlayerInteraction : MonoBehaviour
         item.transform.DORotate(Vector3.zero, 0.5f);
         currentlyHolding = item;
         await Task.Delay(500);
-        if (rb != null)
-        {
-            if (rb.isKinematic)
-            {
-                item.transform.parent = holdTransform;
+       
+        item.transform.parent = holdTransform;
 
-            }
-        }
+      
             
 
     }
@@ -116,10 +112,18 @@ public class PlayerInteraction : MonoBehaviour
             {
                 if (!item.holding)
                 {
+                    Debug.Log(item.itemData.name);
                     itemList.Add(item);
 
                 }
             }
+
+            if(c.TryGetComponent(out Horror h))
+            {
+                Debug.Log("eh");
+                itemList.Add(h);
+            }
+
         }
 
        itemList= itemList.OrderBy(x => Vector2.Distance(x.transform.position,transform.position)).ToList();
@@ -140,7 +144,6 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (currentlyHovering == null)
             {
-                Debug.Log("ss");
             }
             currentlyHovering?.HoverEnd();
 
