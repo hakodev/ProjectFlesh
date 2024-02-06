@@ -668,7 +668,7 @@ MonoBehaviour:
   kitchenToBedroom: {fileID: 1020936050}
   kitchenToLivingRoom: {fileID: 1405243107}
   livingRoomToKitchen: {fileID: 2030351261}
-  blackScreen: {fileID: 0}
+  blackScreen: {fileID: 1279671178}
   bedroomSpawnPosition: {x: 9.35, y: -2.38}
   kitchenSpawnPositionLeft: {x: -10.35, y: -22.25}
   kitchenSpawnPositionRight: {x: 10.55, y: -22.25}
