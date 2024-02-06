@@ -23,7 +23,7 @@ public class HorrorSystem : MonoBehaviour
 
     private void Start()
     {
-      //  GameManager.instance.OnDayBegin.AddListener(DayBegin);
+        GameManager.instance.OnDayBegin.AddListener(DayBegin);
     }
     private void Awake()
     {

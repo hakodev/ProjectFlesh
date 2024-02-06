@@ -368,7 +368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactText: {fileID: 1471685208094726003}
-  active: 1
+  active: 0
   location: {fileID: 0}
   drainRatioMult: 1
   threatOnInspect: 1
