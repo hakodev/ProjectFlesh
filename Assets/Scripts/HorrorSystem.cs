@@ -21,9 +21,10 @@ public class HorrorSystem : MonoBehaviour
 
     public GameObject followingFigure;
 
+   
+
     private void Start()
     {
-        GameManager.instance.OnDayBegin.AddListener(DayBegin);
     }
     private void Awake()
     {
@@ -33,7 +34,8 @@ public class HorrorSystem : MonoBehaviour
         }
         else { Destroy(this); };
 
-      
+        GameManager.instance.OnDayBegin.AddListener(DayBegin);
+
     }
 
 

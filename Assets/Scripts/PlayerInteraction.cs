@@ -114,7 +114,6 @@ public class PlayerInteraction : MonoBehaviour
             {
                 if (!item.holding)
                 {
-                    Debug.Log(item.itemData.name);
                     itemList.Add(item);
 
                 }
@@ -122,8 +121,6 @@ public class PlayerInteraction : MonoBehaviour
 
             if(c.TryGetComponent(out Horror h))
             {
-                Debug.Log("eh");
-                Debug.Log(h.active);
                 if (h.active)
                 {
                 itemList.Add(h);

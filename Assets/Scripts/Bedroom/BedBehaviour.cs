@@ -1,12 +1,13 @@
 using System.Threading.Tasks;
 using UnityEngine;
-
+using TMPro;
+using DG.Tweening;
 public class BedBehaviour : MonoBehaviour
 {
     [SerializeField] private Sprite bedEmpty;
     [SerializeField] private Sprite bedKid;
     private SpriteRenderer spriteRenderer;
-
+    public TextMeshProUGUI InteractText;
     //TODO: Change bed sprite depending on whether the player is sleeping or not
 
     private void Awake()
@@ -19,6 +20,29 @@ public class BedBehaviour : MonoBehaviour
         spriteRenderer.sprite = bedEmpty;
     }
 
+    private void OnTriggerEnter2D(Collider2D otherCollider)
+    {
+        if (otherCollider.CompareTag("Player"))
+        {
+            InteractText.DOFade(1f, 0.25f);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D otherCollider)
+    {
+        if (otherCollider.CompareTag("Player"))
+        {
+            InteractText.DOFade(0f, 0.25f);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D otherCollider)
+    {
+        if (otherCollider.CompareTag("Player") && Input.GetKey(KeyCode.E))
+        {
+            Sleep();
+        }
+    }
     public async void Sleep()
     {
 
@@ -31,7 +55,7 @@ public class BedBehaviour : MonoBehaviour
             willSleep = true;
 
         }
-        else if (QuestSystem.instance.AllQuestsCompleted())
+        else if (QuestSystem.instance.ISAllQuestsCompleted())
         {
             spriteRenderer.sprite = bedKid;
             willSleep = true;

@@ -5,11 +5,12 @@ using System.Linq;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+
 public class QuestSystem : MonoBehaviour
 {
 
     public UnityEvent<int> OnTaskCompleted;
-
+    public GameObject gotobedText;
 
     public List<QuestObjectUI> questUIObjects = new List<QuestObjectUI>();
     public List<QuestData> selectedQuests = new List<QuestData>();
@@ -87,6 +88,7 @@ public class QuestSystem : MonoBehaviour
 
     public void CheckQuestAction(int id)
     {
+        Debug.Log(id + "completed");
         int i = 0;
         foreach (QuestData q in selectedQuests)
         {
@@ -107,10 +109,10 @@ public class QuestSystem : MonoBehaviour
             if (q.completed == false) return;
         }
 
-        AllQuestsCompleted();
+        AllQuestCompleted();
     }
 
-    public bool AllQuestsCompleted()
+    public bool ISAllQuestsCompleted()
     {
         bool completed = true;
         foreach(QuestData q in selectedQuests)
@@ -122,6 +124,13 @@ public class QuestSystem : MonoBehaviour
         return completed;
     }
 
+
+    public void AllQuestCompleted()
+    {
+        questContent.SetActive(false);
+        gotobedText.SetActive(true);
+
+    }
 
 
 }

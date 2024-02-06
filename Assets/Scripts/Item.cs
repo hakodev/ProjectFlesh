@@ -66,7 +66,7 @@ public class Item : Interactable
                         pc.rb2d.gravityScale = 0;
                         Vector3 pcSize = pc.transform.localScale;
                         pc.transform.localScale = Vector3.one;
-                        await Task.Delay(1000);
+                        await Task.Delay(2500);
                         isUsed = false;
                         pc.transform.localScale = pcSize;
                         pc.rb2d.gravityScale = 1;

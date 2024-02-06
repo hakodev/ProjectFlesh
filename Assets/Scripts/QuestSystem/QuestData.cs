@@ -15,6 +15,7 @@ public class QuestData : ScriptableObject
    public void Complete()
     {
         completed = true;
+        Debug.Log("questCompleted");
     }
 
 
