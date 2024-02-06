@@ -18,6 +18,7 @@ public class RoomTeleporter : MonoBehaviour {
     [SerializeField] private Vector2 bedroomSpawnPosition;
     [SerializeField] private Vector2 kitchenSpawnPositionLeft;
     [SerializeField] private Vector2 kitchenSpawnPositionRight;
+    [SerializeField] private Vector2 livingRoomSpawnPosition;
 
     private void Start() {
         blackScreen.DOFade(0f, 1f);
@@ -43,7 +44,8 @@ public class RoomTeleporter : MonoBehaviour {
             this.transform.position = bedroomSpawnPosition;
             newYPosition.y = cameraFollower.BedroomPositionY;
         } else if(otherCollider == kitchenToLivingRoom) {
-
+            this.transform.position = livingRoomSpawnPosition;
+            newYPosition.y = cameraFollower.LivingRoomPositionY;
         } else if(otherCollider == livingRoomToKitchen) {
             this.transform.position = kitchenSpawnPositionRight;
             newYPosition.y = cameraFollower.KitchenPositionY;

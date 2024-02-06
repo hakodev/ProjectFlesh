@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    // Player starts at position x: -8.75 and y: -2.38
+
     private void Update() {
         horizontalAxis = Input.GetAxisRaw("Horizontal");
 

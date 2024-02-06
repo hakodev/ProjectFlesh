@@ -9,6 +9,9 @@ public class CameraFollowGameplay : MonoBehaviour {
     private const float kitchenDeadzonePositionLeft = -5.31f;
     private const float kitchenDeadzonePositionRight = 5.31f;
     private const float kitchenPositionY = -20f;
+    private const float livingRoomDeadzonePositionLeft = -10.67f;
+    private const float livingRoomDeadzonePositionRight = 10.67f;
+    private const float livingRoomPositionY = -40f;
 
     public float BedroomPositionY {
         get { return bedroomPositionY; }
@@ -16,6 +19,10 @@ public class CameraFollowGameplay : MonoBehaviour {
 
     public float KitchenPositionY {
         get { return kitchenPositionY; }
+    }
+
+    public float LivingRoomPositionY {
+        get { return livingRoomPositionY; }
     }
 
     [SerializeField] private Transform playerTransform;
@@ -30,9 +37,10 @@ public class CameraFollowGameplay : MonoBehaviour {
             clampedX = Mathf.Clamp(playerTransform.position.x, bedroomDeadzonePositionLeft, bedroomDeadzonePositionRight);
         } else if(this.transform.position.y == kitchenPositionY) {
             clampedX = Mathf.Clamp(playerTransform.position.x, kitchenDeadzonePositionLeft, kitchenDeadzonePositionRight);
+        } else if(this.transform.position.y == livingRoomPositionY) {
+            clampedX = Mathf.Clamp(playerTransform.position.x, livingRoomDeadzonePositionLeft, livingRoomDeadzonePositionRight);
         }
         
-
         this.transform.position = new Vector3(clampedX, this.transform.position.y, this.transform.position.z);
     }
 }
