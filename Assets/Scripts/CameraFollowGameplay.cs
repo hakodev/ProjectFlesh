@@ -1,10 +1,8 @@
 using UnityEngine;
 
 public class CameraFollowGameplay : MonoBehaviour {
-    private const float deadzonePositionLeft = -8.65f;
-    private const float deadzonePositionRight = 8.65f;
-    private const float deadzonePositionUp = 3.95f;
-    private const float deadzonePositionDown = -6.28f;
+    private const float bedroomDeadzonePositionLeft = -3.412f;
+    private const float bedroomDeadzonePositionRight = 3.412f;
 
     [SerializeField] private Transform playerTransform;
 
@@ -13,9 +11,8 @@ public class CameraFollowGameplay : MonoBehaviour {
     }
 
     private void FollowPlayerWithinBounds() {
-        float clampedX = Mathf.Clamp(playerTransform.position.x, deadzonePositionLeft, deadzonePositionRight);
-        float clampedY = Mathf.Clamp(playerTransform.position.y, deadzonePositionDown, deadzonePositionUp);
+        float clampedPosition = Mathf.Clamp(playerTransform.position.x, bedroomDeadzonePositionLeft, bedroomDeadzonePositionRight);
 
-        this.transform.position = new Vector3(clampedX, clampedY, this.transform.position.z);
+        this.transform.position = new Vector3(clampedPosition, this.transform.position.y, this.transform.position.z);
     }
 }
