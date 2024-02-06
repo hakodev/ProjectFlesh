@@ -5,6 +5,7 @@ using UnityEngine;
 public class Horror : Interactable
 {
 
+    public GameObject display;
     public bool active=false;
 
     [HideInInspector]
@@ -16,12 +17,14 @@ public class Horror : Interactable
 
     public void Activate()
     {
-      
+        display.SetActive(true);
         active = true;
     }
 
     public void Deactivate()
     {
+        display.SetActive(false);
+
         active = false;
 
     }
