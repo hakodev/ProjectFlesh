@@ -39,19 +39,17 @@ public class RoomTeleporter : MonoBehaviour {
         if(otherCollider == bedroomToKitchen) {
             this.transform.position = kitchenSpawnPositionLeft;
             newYPosition.y = cameraFollower.KitchenPositionY;
-            cameraFollower.transform.position = newYPosition;
         } else if(otherCollider == kitchenToBedroom) {
             this.transform.position = bedroomSpawnPosition;
             newYPosition.y = cameraFollower.BedroomPositionY;
-            cameraFollower.transform.position = newYPosition;
         } else if(otherCollider == kitchenToLivingRoom) {
 
         } else if(otherCollider == livingRoomToKitchen) {
             this.transform.position = kitchenSpawnPositionRight;
             newYPosition.y = cameraFollower.KitchenPositionY;
-            cameraFollower.transform.position = newYPosition;
         }
 
+        cameraFollower.transform.position = newYPosition;
         blackScreen.DOFade(0f, 0.5f);
     }
 }
