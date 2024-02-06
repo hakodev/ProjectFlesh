@@ -9,11 +9,13 @@ public class AudioManager : MonoBehaviour {
     [field: SerializeField] public AudioClip DaytimeMusicLoop { get; private set; }
     [field: SerializeField] public AudioClip MainMenuMusicLoop { get; private set; }
     [field: SerializeField] public AudioClip ChaseMusicLoop { get; private set; }
+    [field: SerializeField] public AudioClip GameOverMusicLoop { get; private set; }
 
     [field: Header("SFX")] // Add sfx below
     [field: SerializeField] public AudioClip HeartbeatLoopFaster { get; private set; }
     [field: SerializeField] public AudioClip HeartbeatLoop { get; private set; }
     [field: SerializeField] public AudioClip MenuClickSFX { get; private set; }
+    [field: SerializeField] public AudioClip PlayerLost { get; private set; }
     [field: SerializeField] public AudioClip[] Footsteps { get; private set; }
 
     [Header("Audio players")]
