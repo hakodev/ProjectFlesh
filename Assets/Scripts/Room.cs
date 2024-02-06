@@ -7,10 +7,25 @@ public class Room :MonoBehaviour
 
     public string roomName;
 
+    public List<Horror> avaibleHorrors = new List<Horror>();
 
-    public void ApplyRandomHorror()
+
+   public void LeaveRoom()
     {
-
+        foreach(Horror h in avaibleHorrors)
+        {
+            if (h.active)
+            {
+                SanityManager.instance.ThreatChange(h.threatOnIgnore);
+            }
+        }
     }
 
+
+
+    public void ActivateRandomHorror()
+    {
+        avaibleHorrors[Random.Range(0, avaibleHorrors.Count)].Activate();
+
+    }
 }

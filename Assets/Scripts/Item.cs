@@ -4,24 +4,31 @@ using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
 
-public class InteractableItem : MonoBehaviour
+public class Item : Interactable
 {
 
-    public SpriteRenderer dot;
     public ItemData itemData;
     [HideInInspector]
     public bool holding = false;
     public GameObject interactionLight;
     public UnityEvent<int> OnAction;
 
-    public InteractableItem itemProduct;
+    public Item itemProduct;
+
+    public SpriteRenderer dot;
+
 
     private void Start()
     {
         dot.gameObject.SetActive(true);
     }
 
-    public virtual void Interact(InteractableItem item = null)
+    public override void Interact()
+    {
+        base.Interact();
+    }
+
+    public virtual void Interact(Item item = null)
     {
         bool itemWillDestroyed = false;
         if (item == null)
@@ -62,16 +69,7 @@ public class InteractableItem : MonoBehaviour
         holding = false;
 
     }
-    public void HoverStart()
-    {
-        interactionLight.SetActive(true);
-    }
-
-    public void HoverEnd()
-    {
-        interactionLight.SetActive(false);
-
-    }
+   
 
 
 }
@@ -83,7 +81,7 @@ public class Interaction
 {
     public ItemData interactionTarget;
     public int ActionID;
-    public InteractableItem itemProduct;
+    public Item itemProduct;
     public float sanityChangeAmount;
 
 }

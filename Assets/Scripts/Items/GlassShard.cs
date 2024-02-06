@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GlassShard : InteractableItem
+public class GlassShard : Item
 {
     public ItemData catItemData;
     public ParticleSystem bloodParticle;

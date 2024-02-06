@@ -7,8 +7,8 @@ using System.Linq;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    public InteractableItem currentlyHovering;
-    public InteractableItem currentlyHolding;
+    public Interactable currentlyHovering;
+    public Item currentlyHolding;
     public float hoverRadius;
     public LayerMask itemLayer;
 
@@ -20,41 +20,60 @@ public class PlayerInteraction : MonoBehaviour
         ItemCheck();
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (currentlyHovering != null && currentlyHolding==null)
-            {
-                if (currentlyHovering.itemData.holdable)
-                {
 
-                    currentlyHovering.Hold();
-                    Hold(currentlyHovering);
+            if (currentlyHovering.TryGetComponent<Item>(out Item i))
+            {
+                if (currentlyHovering != null && currentlyHolding == null)
+                {
+                    if (i.itemProduct == null)
+                    {
+                        i.Hold();
+                        HoldItem(i);
+                        currentlyHovering.Interact();
+                    }
+                    else
+                    {
+                        Item item = Instantiate(i.itemProduct, currentlyHolding.transform.position, Quaternion.identity);
+                        item.Hold();
+                        HoldItem(item);
+                    }
+
                 }
-                else
+                else if (currentlyHovering != null && currentlyHolding != null)
                 {
-                    InteractableItem item =Instantiate(currentlyHolding.itemProduct,currentlyHolding.transform.position,Quaternion.identity);
-                    item.Hold();
-                    Hold(item);
-                }   
+                    currentlyHolding.Interact(i);
+                }
+
+
             }
-            else if (currentlyHovering!=null && currentlyHolding != null) 
+            else if (currentlyHovering.TryGetComponent(out Horror h))
             {
-                currentlyHolding.Interact(currentlyHovering);
+                h.Interact();
             }
-        }
 
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
 
-            if (currentlyHolding != null)
+
+
+
+
+
+
+
+            if (Input.GetKeyDown(KeyCode.Q))
             {
-                currentlyHolding.Drop();
-                Drop(currentlyHolding);
+
+                if (currentlyHolding != null)
+                {
+                    currentlyHolding.Drop();
+                    Drop(currentlyHolding);
+                }
             }
+
+
         }
-
-
     }
 
-    public async void Hold(InteractableItem item)
+    public async void HoldItem(Item item)
     {
        if(item.TryGetComponent(out Rigidbody2D rb))
         {
@@ -76,7 +95,7 @@ public class PlayerInteraction : MonoBehaviour
 
     }
 
-    public void Drop(InteractableItem item)
+    public void Drop(Item item)
     {
         if (item.TryGetComponent(out Rigidbody2D rb))
         {
@@ -90,10 +109,10 @@ public class PlayerInteraction : MonoBehaviour
     void ItemCheck()
     {
         Collider2D[] hitObjects = Physics2D.OverlapCircleAll(transform.position, hoverRadius, itemLayer);
-        List<InteractableItem> itemList = new List<InteractableItem>();
+        List<Interactable> itemList = new List<Interactable>();
         foreach (Collider2D c in hitObjects)
         {
-            if (c.TryGetComponent(out InteractableItem item))
+            if (c.TryGetComponent(out Item item))
             {
                 if (!item.holding)
                 {

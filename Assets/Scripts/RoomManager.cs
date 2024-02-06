@@ -5,9 +5,25 @@ using UnityEngine;
 public class RoomManager : MonoBehaviour
 {
     //add more rooms as needed
-    public Room livingRoom, kitchen, attic;
 
 
 
+    public List<Room> roooms = new List<Room>();
+
+    public static RoomManager instance;
+
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(instance);
+        }
+        
+    }
 
 }

@@ -2,23 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Horror : MonoBehaviour
+public class Horror : Interactable
 {
 
+    public bool active=false;
 
-    public GameObject horrorRedDisplay;
-    public GameObject horrorMainDisplay;
-    public GameObject horrorLeftOverDisplay;
 
+   
+
+    public float drainRatio;
+    public float threatOnInspect;
+    public float threatOnIgnore;
 
     public void Activate()
     {
-        horrorMainDisplay.SetActive(true);
-        horrorRedDisplay.SetActive(false);
+      
+        active = true;
     }
 
-    public void HorrorEnd()
+    public void Deactivate()
     {
-        horrorLeftOverDisplay.SetActive(true);
+        active = false;
+
+    }
+
+    public void InspectEnd()
+    {
+
+    }
+
+
+    public void Inspect()
+    {
+        HorrorSystem.instance.StartHorrorSequence();
     }
 }

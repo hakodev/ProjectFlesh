@@ -15,6 +15,23 @@ public class SanityManager : MonoBehaviour
 
 
 
+    public static SanityManager instance;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+
+
+    }
+
+
+
     public void SanityChange(float amount,bool constant=false)
     {
         sanity += amount;

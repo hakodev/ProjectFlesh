@@ -6,7 +6,7 @@ using UnityEngine.Rendering.Universal;
 
 namespace InteractableEnviorment
 {
-    public class PsycheledicEffect : MonoBehaviour
+    public class InsaneEffect : MonoBehaviour
     {
 
         float t;
@@ -46,6 +46,11 @@ namespace InteractableEnviorment
            if (volumeProfile.TryGet(out ChromaticAberration chromaticAberration ))
             {
                 chromaticAberration.intensity.value = t;
+            }
+
+           if(volumeProfile.TryGet(out LensDistortion lensDistortion))
+            {
+                lensDistortion.intensity.value = t * -0.5f;
             }
 
            
