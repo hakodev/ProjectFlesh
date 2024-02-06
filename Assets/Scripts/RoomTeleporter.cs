@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using DG.Tweening;
 
 public class RoomTeleporter : MonoBehaviour {
+    [SerializeField] private CameraFollowGameplay cameraFollower;
+
     [Header("Triggers")]
     [SerializeField] private BoxCollider2D bedroomToKitchen;
     [SerializeField] private BoxCollider2D kitchenToBedroom;
@@ -15,6 +17,7 @@ public class RoomTeleporter : MonoBehaviour {
     [Header("Spawn points")]
     [SerializeField] private Vector2 bedroomSpawnPosition;
     [SerializeField] private Vector2 kitchenSpawnPositionLeft;
+    [SerializeField] private Vector2 kitchenSpawnPositionRight;
 
     private void Start() {
         blackScreen.DOFade(0f, 1f);
@@ -26,23 +29,29 @@ public class RoomTeleporter : MonoBehaviour {
            otherCollider == kitchenToLivingRoom ||
            otherCollider == livingRoomToKitchen)
         {
-            blackScreen.DOFade(1f, 0.5f).OnComplete(() => {
-                TeleportToRoom(otherCollider);
-            });
-            
-            blackScreen.DOFade(0f, 0.5f);
+            blackScreen.DOFade(1f, 0.5f).OnComplete(() => TeleportToRoom(otherCollider));
         }
     }
 
     private void TeleportToRoom(Collider2D otherCollider) {
+        Vector2 newYPosition = cameraFollower.transform.position;
+
         if(otherCollider == bedroomToKitchen) {
             this.transform.position = kitchenSpawnPositionLeft;
+            newYPosition.y = cameraFollower.KitchenPositionY;
+            cameraFollower.transform.position = newYPosition;
         } else if(otherCollider == kitchenToBedroom) {
             this.transform.position = bedroomSpawnPosition;
+            newYPosition.y = cameraFollower.BedroomPositionY;
+            cameraFollower.transform.position = newYPosition;
         } else if(otherCollider == kitchenToLivingRoom) {
 
         } else if(otherCollider == livingRoomToKitchen) {
-
+            this.transform.position = kitchenSpawnPositionRight;
+            newYPosition.y = cameraFollower.KitchenPositionY;
+            cameraFollower.transform.position = newYPosition;
         }
+
+        blackScreen.DOFade(0f, 0.5f);
     }
 }
