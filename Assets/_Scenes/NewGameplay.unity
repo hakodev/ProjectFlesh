@@ -687,7 +687,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12de858de2686b04e92a227abd6658c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
   moveSpeed: 6.28
+  restrictMovement: 0
 --- !u!1 &180805086
 GameObject:
   m_ObjectHideFlags: 0
@@ -1344,7 +1346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <DaytimeMusicLoop>k__BackingField: {fileID: 8300000, guid: ba5d9162d017fd249a267d07dc673aee, type: 3}
   <MainMenuMusicLoop>k__BackingField: {fileID: 8300000, guid: 60ec56867e28e4543be8eab111e14bda, type: 3}
-  <ChaseMusicLoop>k__BackingField: {fileID: 8300000, guid: 55e987296e5d6e74f8aa35bb917d2a45, type: 3}
+  <ChaseMusicLoop>k__BackingField: {fileID: 8300000, guid: c9c04ae9229536f4e9abc7729c28045b, type: 3}
   <HeartbeatLoopFaster>k__BackingField: {fileID: 8300000, guid: 4ab3db76d5fe699479b29fded8de52f0, type: 3}
   <HeartbeatLoop>k__BackingField: {fileID: 8300000, guid: 4c1140801ae13a24095f84a77c31e89a, type: 3}
   <Footsteps>k__BackingField:
