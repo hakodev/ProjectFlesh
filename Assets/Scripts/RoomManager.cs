@@ -13,6 +13,15 @@ public class RoomManager : MonoBehaviour
     public static RoomManager instance;
 
 
+    private void Start()
+    {
+        foreach(Room r in roooms)
+        {
+            r.InitializeHorrors();
+        }
+    }
+
+
     private void Awake()
     {
         if (instance == null)

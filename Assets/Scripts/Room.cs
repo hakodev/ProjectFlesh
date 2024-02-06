@@ -23,6 +23,14 @@ public class Room :MonoBehaviour
 
 
 
+    public void InitializeHorrors()
+    {
+        foreach(Horror h in avaibleHorrors)
+        {
+            h.location = this;
+        }
+    }
+
     public void ActivateRandomHorror()
     {
         avaibleHorrors[Random.Range(0, avaibleHorrors.Count)].Activate();

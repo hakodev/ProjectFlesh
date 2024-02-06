@@ -7,7 +7,7 @@ public class Horror : Interactable
 
     public bool active=false;
 
-
+    [HideInInspector]
     public Room location;
 
     public float drainRatioMult;

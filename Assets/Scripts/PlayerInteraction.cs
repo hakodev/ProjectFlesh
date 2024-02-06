@@ -123,7 +123,11 @@ public class PlayerInteraction : MonoBehaviour
             if(c.TryGetComponent(out Horror h))
             {
                 Debug.Log("eh");
+                Debug.Log(h.active);
+                if (h.active)
+                {
                 itemList.Add(h);
+                }
             }
 
         }
