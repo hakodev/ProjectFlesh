@@ -83,11 +83,14 @@ public class PlayerInteraction : MonoBehaviour
         item.transform.DORotate(Vector3.zero, 0.5f);
         currentlyHolding = item;
         await Task.Delay(500);
-       
-        item.transform.parent = holdTransform;
+        if (currentlyHolding == item)
+        {
+            item.transform.parent = holdTransform;
+                
+        }
 
-      
-            
+
+
 
     }
 

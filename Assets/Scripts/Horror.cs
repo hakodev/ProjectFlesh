@@ -40,7 +40,7 @@ public class Horror : Interactable
     public override void Interact()
     {
 
-        Inspect();
+        Inspect();  
         base.Interact();
     }
 }

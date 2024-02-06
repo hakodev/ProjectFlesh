@@ -13,7 +13,7 @@ public class Item : Interactable
     public ItemData itemData;
     [HideInInspector]
     public bool holding = false;
-    public UnityEvent<int> OnAction;
+    public static UnityEvent<int> OnAction;
 
     public Item itemProduct;
 
@@ -50,8 +50,7 @@ public class Item : Interactable
                     itemWillDestroyed = true;
                 }
 
-
-                OnAction?.Invoke(interaction.ActionID);
+                QuestSystem.instance.CheckQuestAction(interaction.ActionID);
 
             }
         }
@@ -74,6 +73,7 @@ public class Item : Interactable
     public void Drop()
     {
         holding = false;
+        transform.parent = null;
         transform.DOMove(startPos, 0.5f);
     }
 

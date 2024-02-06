@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.Events;
+using UnityEngine.UI;
+
 public class QuestSystem : MonoBehaviour
 {
 
@@ -20,6 +22,8 @@ public class QuestSystem : MonoBehaviour
 
     public GameObject questContent;
     public QuestObjectUI objectUIPrefab;
+    public Sprite chaseTodo, normalTodo;
+    public Image todoImage;
     private void Awake()
     {
         if (instance == null)
@@ -39,13 +43,19 @@ public class QuestSystem : MonoBehaviour
         HorrorSystem.instance.OnHorrorStart.AddListener(HorrorStart);
     }
 
-    public void HorrorStart() { }
+    
 
-    public void Initialize()
+    public void HorrorStart() {
+        todoImage.sprite = chaseTodo;
+    
+    }
+
+    public void DayBegin()
     {
         selectedQuests.Clear();
         selectedQuests = GetRandomQuest(3);
-
+        todoImage.sprite = normalTodo;
+        CreateQuestObjects();
     }
     public List<QuestData> GetRandomQuest(int amount)
     {
@@ -69,7 +79,7 @@ public class QuestSystem : MonoBehaviour
         questUIObjects.Clear();
         foreach (QuestData q in selectedQuests)
         {
-            QuestObjectUI questObject = Instantiate(objectUIPrefab);
+            QuestObjectUI questObject = Instantiate(objectUIPrefab,questContent.transform);
             questObject.Initialize(q);
             questUIObjects.Add(questObject);
         }

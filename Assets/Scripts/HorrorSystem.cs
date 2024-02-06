@@ -1,8 +1,11 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class HorrorSystem : MonoBehaviour
 {
@@ -15,7 +18,7 @@ public class HorrorSystem : MonoBehaviour
     public Volume insaneVolume;
 
 
-    Coroutine drainRoutine;
+    public Image blackScreen;
 
     private void Start()
     {
@@ -27,9 +30,7 @@ public class HorrorSystem : MonoBehaviour
         {
             instance = this;
         }
-        else { 
-        } Destroy(this);
-
+      
     }
 
 
@@ -41,15 +42,19 @@ public class HorrorSystem : MonoBehaviour
         RoomManager.instance.roooms[Random.Range(0, roomList.Count)].ActivateRandomHorror();
     }
 
-    public void StartHorrorSequence(float drainRatio)
+    public async void StartHorrorSequence(float drainRatio)
     {
         //start drain
-        //activate 
+        //activate bl
+        blackScreen.DOFade(1, 0.1f);
+        await Task.Delay(100);
+        blackScreen.DOFade(0, 0.1f);
+
         horrorActive = true;
         OnHorrorStart?.Invoke();
         insaneVolume.gameObject.SetActive(true);
-        drainRoutine = StartCoroutine(DrainSanity(drainRatio));
-        SanityManager.instance.ThreatChange(drainRatio * -30);
+        StartCoroutine(DrainSanity(drainRatio));
+        SanityManager.instance.ThreatChange(drainRatio * +30);
     }
 
 
@@ -58,7 +63,6 @@ public class HorrorSystem : MonoBehaviour
         horrorActive = false;
         OnHorrorEnd?.Invoke();
         insaneVolume.gameObject.SetActive(false);
-        StopCoroutine(drainRoutine);
 
     }
 
@@ -68,6 +72,7 @@ public class HorrorSystem : MonoBehaviour
     {
         while (true)
         {
+            if (!horrorActive) break;
             SanityManager.instance.SanityChange(-ratio, true);
 
             yield return new WaitForSeconds(1);

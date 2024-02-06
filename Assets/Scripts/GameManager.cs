@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
         OnDayBegin?.Invoke(dayCount);
 
         //re initialize tasks
-        QuestSystem.instance.Initialize();
+        QuestSystem.instance.DayBegin();
 
     }
 

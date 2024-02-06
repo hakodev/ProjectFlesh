@@ -35,13 +35,15 @@ public class SanityManager : MonoBehaviour
     public void SanityChange(float amount,bool constant=false)
     {
         sanity += amount;
+        sanity = Mathf.Clamp(sanity, 0, 100);
+
         if (sanity <= 0)
         {
             Die();
         }
         if (constant)
         {
-            threatBar.fillAmount = sanity / 100;
+            sanityBar.fillAmount = sanity / 100;
             return;
         }
         sanityBar.DOFillAmount( sanity / 100,0.2f);
@@ -50,6 +52,7 @@ public class SanityManager : MonoBehaviour
     public void ThreatChange(float amount,bool constant = false)
     {
         threat += amount;
+        threat = Mathf.Clamp(threat, 0, 100);
         if (threat >= 100)
         {
             Die();
