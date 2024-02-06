@@ -4,11 +4,9 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - <GameplayAmbienceLoop>k__BackingField: {fileID: 8300000, guid: 60ec56867e28e4543be8eab111e14bda, type: 3}
-  - <BoneBreaking>k__BackingField: {fileID: 8300000, guid: 898683a557a2c724dac8f4947131ea67, type: 3}
-  - <CatStab>k__BackingField: {fileID: 8300000, guid: f0d9e38a2158dd34988229e2f97feaf5, type: 3}
-  - <GlassShatter>k__BackingField: {fileID: 8300000, guid: 836d92c49125bc04585db216639dbc29, type: 3}
-  - <HammerHitCat>k__BackingField: {fileID: 8300000, guid: 0269895152e6b464a89ac58e947609e6, type: 3}
+  - <DaytimeMusicLoop>k__BackingField: {fileID: 8300000, guid: ba5d9162d017fd249a267d07dc673aee, type: 3}
+  - <MainMenuMusicLoop>k__BackingField: {fileID: 8300000, guid: 60ec56867e28e4543be8eab111e14bda, type: 3}
+  - <ChaseMusicLoop>k__BackingField: {fileID: 8300000, guid: 55e987296e5d6e74f8aa35bb917d2a45, type: 3}
   - <HeartbeatLoopFaster>k__BackingField: {fileID: 8300000, guid: 4ab3db76d5fe699479b29fded8de52f0, type: 3}
   - <HeartbeatLoop>k__BackingField: {fileID: 8300000, guid: 4c1140801ae13a24095f84a77c31e89a, type: 3}
   - musicPlayer: {instanceID: 0}

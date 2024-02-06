@@ -29,4 +29,10 @@ public class PlayerController : MonoBehaviour {
     private void FixedUpdate() {
         rb2d.velocity = new Vector2(horizontalAxis * moveSpeed, rb2d.velocity.y);
     }
+
+    public void PlayFootstepSound() {
+        int footstepID = Random.Range(0, AudioManager.Ins.Footsteps.Length);
+
+        AudioManager.Ins.PlaySFXOnce(AudioManager.Ins.Footsteps[footstepID]);
+    }
 }
