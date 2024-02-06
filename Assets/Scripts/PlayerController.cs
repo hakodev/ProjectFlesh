@@ -3,10 +3,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     private Rigidbody2D rb2d;
     private Animator animator;
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
     private const string PLAYER_IS_WALKING = "isWalking";
     [SerializeField] private float moveSpeed = 15f;
     private float horizontalAxis;
+
+
+    public bool restrictMovement;
 
     private void Awake() {
         rb2d = GetComponent<Rigidbody2D>();
@@ -17,6 +20,7 @@ public class PlayerController : MonoBehaviour {
     // Player starts at position x: -8.75 and y: -2.38
 
     private void Update() {
+        if (restrictMovement) return;
         horizontalAxis = Input.GetAxisRaw("Horizontal");
 
         if (horizontalAxis < 0)

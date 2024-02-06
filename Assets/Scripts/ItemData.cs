@@ -10,4 +10,8 @@ public class ItemData : ScriptableObject
     public bool holdable;
     public int optionalActionID;
 
+
+
+    
+
 }

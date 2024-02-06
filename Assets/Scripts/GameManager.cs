@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
+
 public class GameManager : MonoBehaviour
 {
     public int dayCount;
@@ -40,9 +43,11 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void EndDay()
+    public async void EndDay()
     {
-
+        Blink.instance.Fade(1, 0.7f);
+        await Task.Delay(1000);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 
 

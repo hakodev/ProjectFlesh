@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
 using DG.Tweening;
+using System.Threading.Tasks;
 
 public class Item : Interactable
 {
@@ -13,11 +14,15 @@ public class Item : Interactable
     public ItemData itemData;
     [HideInInspector]
     public bool holding = false;
+    [HideInInspector]
     public static UnityEvent<int> OnAction;
 
 
 
-
+    public Sprite animSprite;
+    public Transform animPos;
+    
+    [HideInInspector]
     public Vector3 startPos;
 
     private void Start()
@@ -31,7 +36,7 @@ public class Item : Interactable
         base.Interact();
     }
 
-    public virtual void Interact(Item item = null)
+    public async virtual void Interact(Item item = null)
     {
         bool itemWillDestroyed = false;
 
@@ -41,6 +46,18 @@ public class Item : Interactable
             //player interaction
             if (!itemData.holdable)
             {
+                if (animSprite != null)
+                {
+                    PlayerController pc = FindObjectOfType<PlayerController>();
+                    pc.gameObject.transform.position = animPos.position;
+                    Sprite s = pc.spriteRenderer.sprite;
+                    pc.spriteRenderer.sprite = animSprite;
+                    pc.restrictMovement = true;
+                    Task.Delay(1000);
+                    pc.restrictMovement = false;
+                    pc.spriteRenderer.sprite = s;
+                }
+
                 QuestSystem.instance.CheckQuestAction(itemData.optionalActionID);
 
             }
@@ -57,8 +74,19 @@ public class Item : Interactable
                         Instantiate(interaction.itemProduct, item.transform.position, Quaternion.identity);
                         itemWillDestroyed = true;
                     }
-
                     QuestSystem.instance.CheckQuestAction(interaction.ActionID);
+
+                    if (item.animSprite!= null)
+                    {
+                        PlayerController pc = FindObjectOfType<PlayerController>();
+                        pc.gameObject.transform.position = item.animPos.position;
+                        Sprite s = pc.spriteRenderer.sprite;
+                        pc.spriteRenderer.sprite = item.animSprite;
+                        pc.restrictMovement = true;
+                        Task.Delay(1000);
+                        pc.restrictMovement = false;
+                        pc.spriteRenderer.sprite = s;
+                    }
 
                 }
             }
@@ -70,7 +98,8 @@ public class Item : Interactable
 
             }
         }
-        
+
+      
     }
 
     public void Hold()
