@@ -18,7 +18,6 @@ public class HorrorSystem : MonoBehaviour
     public Volume insaneVolume;
 
 
-    public Image blackScreen;
 
     public GameObject followingFigure;
 
@@ -50,9 +49,10 @@ public class HorrorSystem : MonoBehaviour
     {
         //start drain
         //activate bl
-        blackScreen.DOFade(1, 0.1f);
+        Blink.instance.Fade(1, 0.1f);
         await Task.Delay(100);
-        blackScreen.DOFade(0, 0.1f);
+        Blink.instance.Fade(0, 0.1f);
+
 
         horrorActive = true;
         OnHorrorStart?.Invoke();
