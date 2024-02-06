@@ -12,6 +12,9 @@ public class CameraFollowGameplay : MonoBehaviour {
     private const float livingRoomDeadzonePositionLeft = -10.67f;
     private const float livingRoomDeadzonePositionRight = 10.67f;
     private const float livingRoomPositionY = -40f;
+    private const float basementDeadzonePositionLeft = -12.697f;
+    private const float basementDeadzonePositionRight = 12.697f;
+    private const float basementPositionY = -60f;
 
     public float BedroomPositionY {
         get { return bedroomPositionY; }
@@ -39,8 +42,10 @@ public class CameraFollowGameplay : MonoBehaviour {
             clampedX = Mathf.Clamp(playerTransform.position.x, kitchenDeadzonePositionLeft, kitchenDeadzonePositionRight);
         } else if(this.transform.position.y == livingRoomPositionY) {
             clampedX = Mathf.Clamp(playerTransform.position.x, livingRoomDeadzonePositionLeft, livingRoomDeadzonePositionRight);
+        } else if(this.transform.position.y == basementPositionY) {
+            clampedX = Mathf.Clamp(playerTransform.position.x, basementDeadzonePositionLeft, basementDeadzonePositionRight);
         }
-        
+
         this.transform.position = new Vector3(clampedX, this.transform.position.y, this.transform.position.z);
     }
 }

@@ -19,6 +19,8 @@ public class RoomTeleporter : MonoBehaviour {
     [SerializeField] private Vector2 kitchenSpawnPositionLeft;
     [SerializeField] private Vector2 kitchenSpawnPositionRight;
     [SerializeField] private Vector2 livingRoomSpawnPosition;
+    [SerializeField] private Vector2 basementSpawnPositionLadder;
+    [SerializeField] private Vector2 basementSpawnPositionStairs;
 
     private void Start() {
         blackScreen.DOFade(0f, 1f);
