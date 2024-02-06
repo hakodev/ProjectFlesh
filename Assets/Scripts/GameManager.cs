@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(this);
 
         }
         else
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour
         NewDay();
     }
     //we dont refresh the scene instead re initialize every task
-    public void NewDay()
+     void NewDay()
     {
 
         dayCount++;
@@ -39,6 +40,10 @@ public class GameManager : MonoBehaviour
     }
 
 
+    public void EndDay()
+    {
+
+    }
 
 
 

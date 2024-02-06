@@ -110,9 +110,16 @@ public class QuestSystem : MonoBehaviour
         AllQuestsCompleted();
     }
 
-    public void AllQuestsCompleted()
+    public bool AllQuestsCompleted()
     {
-        //damn
+        bool completed = true;
+        foreach(QuestData q in selectedQuests)
+        {
+            if (!q.completed) completed = false;
+
+        }
+
+        return completed;
     }
 
 
