@@ -23,9 +23,9 @@ public class PlayerInteraction : MonoBehaviour
             if (currentlyHovering == null) return;
             if (currentlyHovering.TryGetComponent<Item>(out Item i))
             {
-                if (currentlyHovering != null && currentlyHolding == null)
+                if (currentlyHolding == null)
                 {
-                    if (i.itemProduct == null)
+                    if (i.itemData.holdable)
                     {
                         i.Hold();
                         HoldItem(i);
@@ -33,13 +33,12 @@ public class PlayerInteraction : MonoBehaviour
                     }
                     else
                     {
-                        Item item = Instantiate(i.itemProduct, currentlyHolding.transform.position, Quaternion.identity);
-                        item.Hold();
-                        HoldItem(item);
+                        i.Interact();
                     }
+                   
 
                 }
-                else if (currentlyHovering != null && currentlyHolding != null)
+                else if (currentlyHolding != null)
                 {
                     currentlyHolding.Interact(i);
                 }

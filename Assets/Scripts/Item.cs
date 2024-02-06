@@ -15,12 +15,10 @@ public class Item : Interactable
     public bool holding = false;
     public static UnityEvent<int> OnAction;
 
-    public Item itemProduct;
 
 
 
     public Vector3 startPos;
-
 
     private void Start()
     {
@@ -36,31 +34,43 @@ public class Item : Interactable
     public virtual void Interact(Item item = null)
     {
         bool itemWillDestroyed = false;
+
+
         if (item == null)
         {
             //player interaction
-        }
-        foreach (Interaction interaction in itemData.interactions)
-        {
-            if (interaction.interactionTarget == item.itemData)
+            if (!itemData.holdable)
             {
-                if (interaction.itemProduct != null)
-                {
-                    Instantiate(interaction.itemProduct, item.transform.position, Quaternion.identity);
-                    itemWillDestroyed = true;
-                }
+                QuestSystem.instance.CheckQuestAction(itemData.optionalActionID);
 
-                QuestSystem.instance.CheckQuestAction(interaction.ActionID);
+            }
+
+        }
+        else
+        {
+            foreach (Interaction interaction in itemData.interactions)
+            {
+                if (interaction.interactionTarget == item.itemData)
+                {
+                    if (interaction.itemProduct != null)
+                    {
+                        Instantiate(interaction.itemProduct, item.transform.position, Quaternion.identity);
+                        itemWillDestroyed = true;
+                    }
+
+                    QuestSystem.instance.CheckQuestAction(interaction.ActionID);
+
+                }
+            }
+
+            if (itemWillDestroyed)
+            {
+                Destroy(item.gameObject);
+                FindObjectOfType<PlayerInteraction>().currentlyHovering = null;
 
             }
         }
-
-        if (itemWillDestroyed)
-        {
-            Destroy(item.gameObject);
-            FindObjectOfType<PlayerInteraction>().currentlyHovering = null;
-
-        }
+        
     }
 
     public void Hold()
@@ -102,7 +112,6 @@ public class Interaction
 {
     public ItemData interactionTarget;
     public int ActionID;
-    public Item itemProduct;
-    public float sanityChangeAmount;
+    public Item itemProduct;    
 
 }

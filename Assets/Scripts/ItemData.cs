@@ -6,6 +6,8 @@ using UnityEngine;
 public class ItemData : ScriptableObject
 {
     public List<Interaction> interactions = new List<Interaction>();
-    public string itemInfoString;
+   // public string itemInfoString;
     public bool holdable;
+    public int optionalActionID;
+
 }

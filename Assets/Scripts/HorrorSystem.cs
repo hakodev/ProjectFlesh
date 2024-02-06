@@ -20,6 +20,8 @@ public class HorrorSystem : MonoBehaviour
 
     public Image blackScreen;
 
+    public GameObject followingFigure;
+
     private void Start()
     {
       //  GameManager.instance.OnDayBegin.AddListener(DayBegin);
@@ -30,6 +32,8 @@ public class HorrorSystem : MonoBehaviour
         {
             instance = this;
         }
+        else { Destroy(this); };
+
       
     }
 
@@ -54,6 +58,7 @@ public class HorrorSystem : MonoBehaviour
         OnHorrorStart?.Invoke();
         insaneVolume.gameObject.SetActive(true);
         StartCoroutine(DrainSanity(drainRatio));
+        followingFigure.SetActive(true);
         SanityManager.instance.ThreatChange(drainRatio * +30);
     }
 

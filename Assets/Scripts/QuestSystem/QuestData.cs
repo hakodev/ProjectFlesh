@@ -9,7 +9,8 @@ public class QuestData : ScriptableObject
     public string questDescription;
     [HideInInspector]
     public bool completed;
-    
+
+    public int sanityChange;
 
    public void Complete()
     {

@@ -95,6 +95,7 @@ public class QuestSystem : MonoBehaviour
                 if (q.questID == id)
                 {
                     q.Complete();
+                    SanityManager.instance.SanityChange(q.sanityChange);
                     questUIObjects[i].Complete();
                 }
             }

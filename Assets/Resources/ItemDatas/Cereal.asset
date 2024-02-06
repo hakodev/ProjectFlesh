@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Cereal
   m_EditorClassIdentifier: 
   interactions:
-  - interactionTarget: {fileID: 0}
-    ActionID: 0
+  - interactionTarget: {fileID: 11400000, guid: 21d0920904783a44fa24febce5d30c8a, type: 2}
+    ActionID: 2
+    sanityChangeAmount: 15
     itemProduct: {fileID: 0}
-    sanityChangeAmount: 0
-  itemInfoString: 
-  holdable: 0
+  holdable: 1
