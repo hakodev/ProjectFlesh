@@ -28,6 +28,10 @@ public class CameraFollowGameplay : MonoBehaviour {
         get { return livingRoomPositionY; }
     }
 
+    public float BasementPositionY {
+        get { return basementPositionY; }
+    }
+
     [SerializeField] private Transform playerTransform;
 
     private void LateUpdate() {

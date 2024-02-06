@@ -22,6 +22,14 @@ public class RoomTeleporter : MonoBehaviour {
     [SerializeField] private Vector2 basementSpawnPositionLadder;
     [SerializeField] private Vector2 basementSpawnPositionStairs;
 
+    public Vector2 BasementSpawnPositionLadder {
+        get { return basementSpawnPositionLadder; }
+    }
+
+    public Vector2 BasementSpawnPositionStairs {
+        get { return basementSpawnPositionStairs; }
+    }
+
     private void Start() {
         blackScreen.DOFade(0f, 1f);
     }
