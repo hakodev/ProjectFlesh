@@ -34,7 +34,7 @@ public class RoomTeleporter : MonoBehaviour {
     }
 
     private void TeleportToRoom(Collider2D otherCollider) {
-        Vector2 newYPosition = cameraFollower.transform.position;
+        Vector3 newYPosition = cameraFollower.transform.position;
 
         if(otherCollider == bedroomToKitchen) {
             this.transform.position = kitchenSpawnPositionLeft;
