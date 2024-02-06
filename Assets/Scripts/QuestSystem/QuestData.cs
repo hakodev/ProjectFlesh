@@ -9,7 +9,7 @@ public class QuestData : ScriptableObject
     public string questDescription;
     [HideInInspector]
     public bool completed;
-    public List<string> questSteps = new List<string>();
+    
 
    public void Complete()
     {

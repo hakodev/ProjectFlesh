@@ -10,7 +10,7 @@ public class HorrorSystem : MonoBehaviour
     public bool horrorActive = false;
     public static HorrorSystem instance;
 
-    public UnityEvent horrorStart, horrorEnd;
+    public UnityEvent OnHorrorStart, OnHorrorEnd;
 
     public Volume insaneVolume;
 
@@ -27,7 +27,9 @@ public class HorrorSystem : MonoBehaviour
         {
             instance = this;
         }
-        else Destroy(this);
+        else { 
+        } Destroy(this);
+
     }
 
 
@@ -44,7 +46,7 @@ public class HorrorSystem : MonoBehaviour
         //start drain
         //activate 
         horrorActive = true;
-        horrorStart?.Invoke();
+        OnHorrorStart?.Invoke();
         insaneVolume.gameObject.SetActive(true);
         drainRoutine = StartCoroutine(DrainSanity(drainRatio));
         SanityManager.instance.ThreatChange(drainRatio * -30);
@@ -54,7 +56,7 @@ public class HorrorSystem : MonoBehaviour
     public void EndHorrorSequence()
     {
         horrorActive = false;
-        horrorEnd?.Invoke();
+        OnHorrorEnd?.Invoke();
         insaneVolume.gameObject.SetActive(false);
         StopCoroutine(drainRoutine);
 

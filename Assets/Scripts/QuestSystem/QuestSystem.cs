@@ -18,7 +18,7 @@ public class QuestSystem : MonoBehaviour
 
     public static QuestSystem instance;
 
-
+    public GameObject questContent;
     public QuestObjectUI objectUIPrefab;
     private void Awake()
     {
@@ -32,7 +32,14 @@ public class QuestSystem : MonoBehaviour
             Destroy(this);
         }
     }
-   
+
+
+    private void Start()
+    {
+        HorrorSystem.instance.OnHorrorStart.AddListener(HorrorStart);
+    }
+
+    public void HorrorStart() { }
 
     public void Initialize()
     {
@@ -45,7 +52,7 @@ public class QuestSystem : MonoBehaviour
         System.Random rnd = new System.Random();
         List<QuestData> datas = allQuests.OrderBy(x => rnd.Next()).ToList().Take(amount).ToList();
         List<QuestData> copyList = new List<QuestData>();
-        foreach(QuestData q in datas)
+        foreach (QuestData q in datas)
         {
             copyList.Add(Instantiate(q));
         }
@@ -55,14 +62,14 @@ public class QuestSystem : MonoBehaviour
 
     public void CreateQuestObjects()
     {
-        foreach(QuestObjectUI g in questUIObjects)
+        foreach (QuestObjectUI g in questUIObjects)
         {
             Destroy(g.gameObject);
         }
         questUIObjects.Clear();
-        foreach(QuestData q in selectedQuests)
+        foreach (QuestData q in selectedQuests)
         {
-            QuestObjectUI questObject= Instantiate(objectUIPrefab);
+            QuestObjectUI questObject = Instantiate(objectUIPrefab);
             questObject.Initialize(q);
             questUIObjects.Add(questObject);
         }
@@ -71,7 +78,7 @@ public class QuestSystem : MonoBehaviour
     public void CheckQuestAction(int id)
     {
         int i = 0;
-        foreach(QuestData q in selectedQuests)
+        foreach (QuestData q in selectedQuests)
         {
             if (!q.completed)
             {
@@ -84,7 +91,7 @@ public class QuestSystem : MonoBehaviour
             i++;
         }
 
-        foreach(QuestData q in selectedQuests)
+        foreach (QuestData q in selectedQuests)
         {
             if (q.completed == false) return;
         }
