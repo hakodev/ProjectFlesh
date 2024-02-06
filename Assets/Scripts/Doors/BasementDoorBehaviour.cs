@@ -8,6 +8,7 @@ public class BasementDoorBehaviour : MonoBehaviour {
     [SerializeField] private CameraFollowGameplay cameraFollower;
     [SerializeField] private TextMeshProUGUI basementDoorInteractionText;
     [SerializeField] private Image blackScreen;
+    [SerializeField] private Room livingRoom;
 
     private void OnTriggerEnter2D(Collider2D otherCollider) {
         if(otherCollider.CompareTag("Player")) {
@@ -30,6 +31,7 @@ public class BasementDoorBehaviour : MonoBehaviour {
     private void TeleportToBasementStairs() {
         Vector3 newYPosition = cameraFollower.transform.position;
         teleporter.gameObject.transform.position = teleporter.BasementSpawnPositionStairs;
+        livingRoom.LeaveRoom();
         newYPosition.y = cameraFollower.BasementPositionY;
         cameraFollower.transform.position = newYPosition;
         blackScreen.DOFade(0f, 0.5f);

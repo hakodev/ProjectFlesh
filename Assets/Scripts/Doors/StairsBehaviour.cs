@@ -9,6 +9,7 @@ public class StairsBehaviour : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI stairsInteractionText;
     [SerializeField] private Image blackScreen;
     [SerializeField] private Transform basementDoorTriggerTransform;
+    [SerializeField] private Room basement;
 
     private void OnTriggerEnter2D(Collider2D otherCollider) {
         if(otherCollider.CompareTag("Player")) {
@@ -29,10 +30,14 @@ public class StairsBehaviour : MonoBehaviour {
     }
 
     private void TeleportToLivingRoom() {
-        Vector3 newYPosition = cameraFollower.transform.position;
-        teleporter.gameObject.transform.position = basementDoorTriggerTransform.position;
-        newYPosition.y = cameraFollower.LivingRoomPositionY;
-        cameraFollower.transform.position = newYPosition;
+        Vector3 newCameraYPosition = cameraFollower.transform.position;
+        Vector3 newPlayerPosition = teleporter.gameObject.transform.position;
+        newPlayerPosition.x = basementDoorTriggerTransform.position.x;
+        newPlayerPosition.y = teleporter.LivingRoomBasementDoorSpawnY;
+        teleporter.gameObject.transform.position = newPlayerPosition;
+        basement.LeaveRoom();
+        newCameraYPosition.y = cameraFollower.LivingRoomPositionY;
+        cameraFollower.transform.position = newCameraYPosition;
         blackScreen.DOFade(0f, 0.5f);
     }
 }

@@ -8,6 +8,7 @@ public class TrapDoorBehaviour : MonoBehaviour {
     [SerializeField] private CameraFollowGameplay cameraFollower;
     [SerializeField] private TextMeshProUGUI trapDoorInteractionText;
     [SerializeField] private Image blackScreen;
+    [SerializeField] private Room kitchen;
 
     private void OnTriggerEnter2D(Collider2D otherCollider) {
         if(otherCollider.CompareTag("Player")) {
@@ -28,10 +29,11 @@ public class TrapDoorBehaviour : MonoBehaviour {
     }
 
     private void TeleportToBasementLadder() {
-        Vector3 newYPosition = cameraFollower.transform.position;
+        Vector3 newCameraYPosition = cameraFollower.transform.position;
         teleporter.gameObject.transform.position = teleporter.BasementSpawnPositionLadder;
-        newYPosition.y = cameraFollower.BasementPositionY;
-        cameraFollower.transform.position = newYPosition;
+        kitchen.LeaveRoom();
+        newCameraYPosition.y = cameraFollower.BasementPositionY;
+        cameraFollower.transform.position = newCameraYPosition;
         blackScreen.DOFade(0f, 0.5f);
     }
 }

@@ -9,6 +9,7 @@ public class LadderBehaviour : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI ladderInteractionText;
     [SerializeField] private Image blackScreen;
     [SerializeField] private Transform trapDoorTriggerTransform;
+    [SerializeField] private Room basement;
 
     private void OnTriggerEnter2D(Collider2D otherCollider) {
         if(otherCollider.CompareTag("Player")) {
@@ -29,10 +30,14 @@ public class LadderBehaviour : MonoBehaviour {
     }
 
     private void TeleportToKitchen() {
-        Vector3 newYPosition = cameraFollower.transform.position;
-        teleporter.gameObject.transform.position = trapDoorTriggerTransform.position;
-        newYPosition.y = cameraFollower.KitchenPositionY;
-        cameraFollower.transform.position = newYPosition;
+        Vector3 newCameraYPosition = cameraFollower.transform.position;
+        Vector3 newPlayerPosition = teleporter.gameObject.transform.position;
+        newPlayerPosition.x = trapDoorTriggerTransform.position.x;
+        newPlayerPosition.y = teleporter.KitchenTrapDoorSpawnY;
+        teleporter.gameObject.transform.position = newPlayerPosition;
+        basement.LeaveRoom();
+        newCameraYPosition.y = cameraFollower.KitchenPositionY;
+        cameraFollower.transform.position = newCameraYPosition;
         blackScreen.DOFade(0f, 0.5f);
     }
 }

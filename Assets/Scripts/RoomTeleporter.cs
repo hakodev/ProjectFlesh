@@ -4,6 +4,9 @@ using DG.Tweening;
 
 public class RoomTeleporter : MonoBehaviour {
     [SerializeField] private CameraFollowGameplay cameraFollower;
+    [SerializeField] private Room bedroom;
+    [SerializeField] private Room kitchen;
+    [SerializeField] private Room livingRoom;
 
     [Header("Triggers")]
     [SerializeField] private BoxCollider2D bedroomToKitchen;
@@ -21,6 +24,14 @@ public class RoomTeleporter : MonoBehaviour {
     [SerializeField] private Vector2 livingRoomSpawnPosition;
     [SerializeField] private Vector2 basementSpawnPositionLadder;
     [SerializeField] private Vector2 basementSpawnPositionStairs;
+
+    public float KitchenTrapDoorSpawnY {
+        get { return kitchenSpawnPositionLeft.y; }
+    }
+
+    public float LivingRoomBasementDoorSpawnY {
+        get { return livingRoomSpawnPosition.y; }
+    }
 
     public Vector2 BasementSpawnPositionLadder {
         get { return basementSpawnPositionLadder; }
@@ -49,15 +60,19 @@ public class RoomTeleporter : MonoBehaviour {
 
         if(otherCollider == bedroomToKitchen) {
             this.transform.position = kitchenSpawnPositionLeft;
+            bedroom.LeaveRoom();
             newYPosition.y = cameraFollower.KitchenPositionY;
         } else if(otherCollider == kitchenToBedroom) {
             this.transform.position = bedroomSpawnPosition;
+            kitchen.LeaveRoom();
             newYPosition.y = cameraFollower.BedroomPositionY;
         } else if(otherCollider == kitchenToLivingRoom) {
             this.transform.position = livingRoomSpawnPosition;
+            kitchen.LeaveRoom();
             newYPosition.y = cameraFollower.LivingRoomPositionY;
         } else if(otherCollider == livingRoomToKitchen) {
             this.transform.position = kitchenSpawnPositionRight;
+            livingRoom.LeaveRoom();
             newYPosition.y = cameraFollower.KitchenPositionY;
         }
 

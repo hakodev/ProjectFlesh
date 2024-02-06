@@ -808,6 +808,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraFollower: {fileID: 1619049477}
+  bedroom: {fileID: 1378064849}
+  kitchen: {fileID: 1273076127}
+  livingRoom: {fileID: 42927342}
   bedroomToKitchen: {fileID: 1461815547}
   kitchenToBedroom: {fileID: 1020936050}
   kitchenToLivingRoom: {fileID: 1405243107}
@@ -1013,6 +1016,7 @@ MonoBehaviour:
   ladderInteractionText: {fileID: 354365163}
   blackScreen: {fileID: 1279671178}
   trapDoorTriggerTransform: {fileID: 1339656911}
+  basement: {fileID: 1417067687}
 --- !u!1 &200946337
 GameObject:
   m_ObjectHideFlags: 0
@@ -2161,6 +2165,7 @@ MonoBehaviour:
   <ChaseMusicLoop>k__BackingField: {fileID: 8300000, guid: c9c04ae9229536f4e9abc7729c28045b, type: 3}
   <HeartbeatLoopFaster>k__BackingField: {fileID: 8300000, guid: 4ab3db76d5fe699479b29fded8de52f0, type: 3}
   <HeartbeatLoop>k__BackingField: {fileID: 8300000, guid: 4c1140801ae13a24095f84a77c31e89a, type: 3}
+  <MenuClickSFX>k__BackingField: {fileID: 0}
   <Footsteps>k__BackingField:
   - {fileID: 8300000, guid: c6a19de93a7ea1440abbf1a9a8d30ffc, type: 3}
   - {fileID: 8300000, guid: 77cd6b932a4cb634a9763553a57e5bd0, type: 3}
@@ -2523,6 +2528,7 @@ MonoBehaviour:
   stairsInteractionText: {fileID: 377197318}
   blackScreen: {fileID: 1279671178}
   basementDoorTriggerTransform: {fileID: 1120530091}
+  basement: {fileID: 1417067687}
 --- !u!1001 &525878630
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4614,6 +4620,7 @@ MonoBehaviour:
   cameraFollower: {fileID: 1619049477}
   basementDoorInteractionText: {fileID: 69204594}
   blackScreen: {fileID: 1279671178}
+  livingRoom: {fileID: 42927342}
 --- !u!61 &1120530093
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6298,6 +6305,7 @@ MonoBehaviour:
   cameraFollower: {fileID: 1619049477}
   trapDoorInteractionText: {fileID: 303474144}
   blackScreen: {fileID: 1279671178}
+  kitchen: {fileID: 1273076127}
 --- !u!61 &1339656913
 BoxCollider2D:
   m_ObjectHideFlags: 0
