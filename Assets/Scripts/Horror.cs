@@ -8,9 +8,9 @@ public class Horror : Interactable
     public bool active=false;
 
 
-   
+    public Room location;
 
-    public float drainRatio;
+    public float drainRatioMult;
     public float threatOnInspect;
     public float threatOnIgnore;
 
@@ -34,6 +34,13 @@ public class Horror : Interactable
 
     public void Inspect()
     {
-        HorrorSystem.instance.StartHorrorSequence();
+        HorrorSystem.instance.StartHorrorSequence(drainRatioMult*location.roomDrainRatioMult);
+    }
+
+    public override void Interact()
+    {
+
+        Inspect();
+        base.Interact();
     }
 }

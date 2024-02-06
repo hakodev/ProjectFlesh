@@ -7,7 +7,7 @@ using UnityEngine.Rendering;
 public class HorrorSystem : MonoBehaviour
 {
 
-    public bool horrorActive=false;
+    public bool horrorActive = false;
     public static HorrorSystem instance;
 
     public UnityEvent horrorStart, horrorEnd;
@@ -19,26 +19,35 @@ public class HorrorSystem : MonoBehaviour
 
     private void Start()
     {
-        GameManager.instance.OnDayBegin.AddListener(DayBegin);
+      //  GameManager.instance.OnDayBegin.AddListener(DayBegin);
     }
-
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else Destroy(this);
+    }
 
 
     public void DayBegin(int dayCount)
     {
-       
+
 
         List<Room> roomList = RoomManager.instance.roooms;
         RoomManager.instance.roooms[Random.Range(0, roomList.Count)].ActivateRandomHorror();
     }
 
-    public void StartHorrorSequence()
+    public void StartHorrorSequence(float drainRatio)
     {
         //start drain
         //activate 
         horrorActive = true;
         horrorStart?.Invoke();
         insaneVolume.gameObject.SetActive(true);
+        drainRoutine = StartCoroutine(DrainSanity(drainRatio));
+        SanityManager.instance.ThreatChange(drainRatio * -30);
     }
 
 
@@ -47,7 +56,7 @@ public class HorrorSystem : MonoBehaviour
         horrorActive = false;
         horrorEnd?.Invoke();
         insaneVolume.gameObject.SetActive(false);
-
+        StopCoroutine(drainRoutine);
 
     }
 
@@ -55,7 +64,14 @@ public class HorrorSystem : MonoBehaviour
 
     public IEnumerator DrainSanity(float ratio)
     {
-        yield return null;
+        while (true)
+        {
+            SanityManager.instance.SanityChange(-ratio, true);
+
+            yield return new WaitForSeconds(1);
+        }
+
+
     }
 
 

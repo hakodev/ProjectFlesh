@@ -9,7 +9,7 @@ public class Room :MonoBehaviour
 
     public List<Horror> avaibleHorrors = new List<Horror>();
 
-
+    public float roomDrainRatioMult;
    public void LeaveRoom()
     {
         foreach(Horror h in avaibleHorrors)
