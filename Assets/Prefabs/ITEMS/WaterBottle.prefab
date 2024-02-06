@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 387
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 6b0ae84910b299a4f85ece4c488249f8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -104,6 +104,8 @@ MonoBehaviour:
   dot: {fileID: 1135764542807983627}
   itemData: {fileID: 11400000, guid: df67913c62fd72947bb61f389ad88ea9, type: 2}
   holding: 0
+  animSprite: {fileID: 0}
+  animPos: {fileID: 0}
   startPos: {x: 0, y: 0, z: 0}
 --- !u!61 &5179395146884307844
 BoxCollider2D:

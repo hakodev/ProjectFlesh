@@ -132,7 +132,7 @@ public class PlayerInteraction : MonoBehaviour
 
         }
 
-       itemList= itemList.OrderBy(x => Vector2.Distance(x.transform.position,transform.position)).ToList();
+       itemList= itemList.OrderBy(x => Mathf.Abs(x.transform.position.x-transform.position.x)).ToList();
         if (itemList.Count > 0)
         {
             if (currentlyHovering != itemList[0])
