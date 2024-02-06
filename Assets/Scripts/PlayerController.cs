@@ -1,8 +1,9 @@
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-    private Rigidbody2D rb2d;
+    public Rigidbody2D rb2d;
     private Animator animator;
+    [HideInInspector]
     public SpriteRenderer spriteRenderer;
     private const string PLAYER_IS_WALKING = "isWalking";
     [SerializeField] private float moveSpeed = 15f;

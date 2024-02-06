@@ -59,7 +59,7 @@ public class HorrorSystem : MonoBehaviour
         insaneVolume.gameObject.SetActive(true);
         StartCoroutine(DrainSanity(drainRatio));
         followingFigure.SetActive(true);
-        SanityManager.instance.ThreatChange(drainRatio * +30);
+        SanityManager.instance.ThreatChange(drainRatio * -30);
     }
 
 
