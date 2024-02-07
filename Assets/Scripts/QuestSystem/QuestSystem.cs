@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.Events;
 using UnityEngine.UI;
-
+using DG.Tweening;
 
 public class QuestSystem : MonoBehaviour
 {
@@ -25,6 +25,8 @@ public class QuestSystem : MonoBehaviour
     public QuestObjectUI objectUIPrefab;
     public Sprite chaseTodo, normalTodo;
     public Image todoImage;
+
+    public RectTransform chaseTransform;
     private void Awake()
     {
         if (instance == null)
@@ -48,7 +50,7 @@ public class QuestSystem : MonoBehaviour
 
     public void HorrorStart() {
         todoImage.sprite = chaseTodo;
-    
+        todoImage.rectTransform.DOMove(chaseTransform.transform.position, 0.3f);
     }
 
     public void DayBegin()
