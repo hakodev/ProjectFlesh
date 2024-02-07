@@ -49,6 +49,10 @@ public class SanityManager : MonoBehaviour
         sanity += amount;
         sanity = Mathf.Clamp(sanity, 0, 100);
 
+        if(HorrorSystem.instance.horrorActive && sanity < 26) {
+            AudioManager.Ins.PlaySFXLoop2(AudioManager.Ins.HeartbeatLoopFaster);
+        }
+
         if (sanity <= 0)
         {
             Die();
@@ -65,6 +69,11 @@ public class SanityManager : MonoBehaviour
     {
         threat += amount;
         threat = Mathf.Clamp(threat, 0, 100);
+
+        if(HorrorSystem.instance.horrorActive && threat > 74) {
+            AudioManager.Ins.PlaySFXLoop2(AudioManager.Ins.HeartbeatLoopFaster);
+        }
+
         if (threat >= 100)
         {
             Die();
@@ -80,9 +89,11 @@ public class SanityManager : MonoBehaviour
 
     public void Die()
     {
+        playerController.HorizontalAxis = 0;
         playerController.enabled = false;
-        AudioManager.Ins.PlaySFXOnce(AudioManager.Ins.PlayerLost);
-        blackScreen.DOFade(1f, AudioManager.Ins.PlayerLost.length).OnComplete(() => {
+        AudioManager.Ins.StopMusic();
+        AudioManager.Ins.PlaySFXOnce3(AudioManager.Ins.PlayerLost);
+        blackScreen.DOFade(1f, 4f).OnComplete(() => {
             SceneManager.LoadScene(2);
         });
     }

@@ -9,6 +9,10 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float moveSpeed = 15f;
     private float horizontalAxis;
 
+    public float HorizontalAxis {
+        get { return horizontalAxis; }
+        set { horizontalAxis = value; }
+    }
 
     public bool restrictMovement;
 

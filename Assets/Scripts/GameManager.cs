@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
@@ -44,13 +45,14 @@ public class GameManager : MonoBehaviour
     //we dont refresh the scene instead re initialize every task
     void NewDay()
     {
-
+        SanityManager.instance.SanityChange(1000f);
+        SanityManager.instance.ThreatChange(-1000f);
         dayCount++;
         OnDayBegin?.Invoke(dayCount);
         HorrorSystem.instance.DayBegin(0);
         //re initialize tasks
         QuestSystem.instance.DayBegin();
-
+        AudioManager.Ins.PlayMusicLoop(AudioManager.Ins.DaytimeMusicLoop);
     }
 
 
