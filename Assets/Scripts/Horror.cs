@@ -43,6 +43,7 @@ public class Horror : Interactable
     public void Inspect()
     {
         HorrorSystem.instance.StartHorrorSequence(drainRatioMult*location.roomDrainRatioMult);
+        active = false;
     }
 
     public override void Interact()

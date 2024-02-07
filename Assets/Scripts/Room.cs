@@ -11,15 +11,24 @@ public class Room :MonoBehaviour
 
     public float roomDrainRatioMult;
 
+    float counter = 0;
 
-   public void LeaveRoom()
+    private void Update()
+    {
+        counter += Time.deltaTime;
+    }
+
+    public void LeaveRoom()
     {
         foreach(Horror h in avaibleHorrors)
         {
             if (h.active)
             {
-                Debug.Log("ignore damage");
-                SanityManager.instance.ThreatChange(h.threatOnIgnore);
+                if (counter >= 1)
+                {
+                    SanityManager.instance.ThreatChange(h.threatOnIgnore);
+                    counter = 0;
+                }
             }
         }
     }

@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
 
         dayCount++;
         OnDayBegin?.Invoke(dayCount);
-
+        HorrorSystem.instance.DayBegin(0);
         //re initialize tasks
         QuestSystem.instance.DayBegin();
 

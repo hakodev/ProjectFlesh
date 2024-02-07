@@ -15,6 +15,7 @@ public class RoomManager : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("hey hey");
         foreach(Room r in roooms)
         {
             r.InitializeHorrors();

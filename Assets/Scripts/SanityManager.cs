@@ -20,7 +20,6 @@ public class SanityManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this);
 
         }
         else
@@ -31,8 +30,20 @@ public class SanityManager : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        SceneManager.sceneLoaded += Initialize;
+
+       
+    }
 
 
+    public void Initialize(Scene scene, LoadSceneMode mode)
+    {
+        sanityBar.fillAmount = sanity / 100;
+        threatBar.fillAmount = threat / 100;
+
+    }
     public void SanityChange(float amount,bool constant=false)
     {
         sanity += amount;

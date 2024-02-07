@@ -101,12 +101,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactText: {fileID: 5869188817580074447}
+  itemSprite: {fileID: 0}
   dot: {fileID: 1135764542807983627}
   itemData: {fileID: 11400000, guid: df67913c62fd72947bb61f389ad88ea9, type: 2}
   holding: 0
+  isUsed: 0
   animSprite: {fileID: 0}
   animPos: {fileID: 0}
   startPos: {x: 0, y: 0, z: 0}
+  neededID: 3
 --- !u!61 &5179395146884307844
 BoxCollider2D:
   m_ObjectHideFlags: 0

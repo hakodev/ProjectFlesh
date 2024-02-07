@@ -8,6 +8,8 @@ public class BedBehaviour : MonoBehaviour
     [SerializeField] private Sprite bedKid;
     private SpriteRenderer spriteRenderer;
     public TextMeshProUGUI InteractText;
+
+    float counter = 0;
     //TODO: Change bed sprite depending on whether the player is sleeping or not
 
     private void Awake()
@@ -15,6 +17,10 @@ public class BedBehaviour : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    private void Update()
+    {
+        counter += Time.deltaTime;
+    }
     public void GetUp()
     {
         spriteRenderer.sprite = bedEmpty;
@@ -45,7 +51,9 @@ public class BedBehaviour : MonoBehaviour
     }
     public async void Sleep()
     {
+        if (counter <= 1) return;
 
+        counter = 0;
         bool willSleep=false;
 
         if (HorrorSystem.instance.horrorActive)
@@ -53,9 +61,9 @@ public class BedBehaviour : MonoBehaviour
             spriteRenderer.sprite = bedKid;
             FindObjectOfType<PlayerController>().spriteRenderer.color = new Color32(0, 0, 0, 0);
 
-            await Task.Delay(1000);
+            await Task.Delay(100);
 
-            HorrorSystem.instance.EndHorrorSequence();
+           // HorrorSystem.instance.EndHorrorSequence();
             willSleep = true;
 
         }

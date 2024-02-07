@@ -99,10 +99,17 @@ public class Item : Interactable
                         itemWillDestroyed = true;
                     }
                     QuestSystem.instance.CheckQuestAction(interaction.ActionID);
+                    if (interaction.ActionID == 3)
+                    {
+                        itemWillDestroyed = true;
+
+                    }
+                    Debug.Log("itemDestroyed?");
 
                     Debug.Log(interaction.ActionID + " " + neededID);
                     if (item.animSprite != null && interaction.ActionID == item.neededID)
                     {
+
 
                         isUsed = true;
                         PlayerController pc = FindObjectOfType<PlayerController>();
@@ -135,8 +142,8 @@ public class Item : Interactable
 
             if (itemWillDestroyed)
             {
-                Destroy(item.gameObject);
                 FindObjectOfType<PlayerInteraction>().currentlyHovering = null;
+                Destroy(this.gameObject);
 
             }
         }
