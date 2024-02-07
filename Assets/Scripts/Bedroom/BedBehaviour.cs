@@ -50,19 +50,26 @@ public class BedBehaviour : MonoBehaviour
 
         if (HorrorSystem.instance.horrorActive)
         {
-            HorrorSystem.instance.EndHorrorSequence();
             spriteRenderer.sprite = bedKid;
+            FindObjectOfType<PlayerController>().spriteRenderer.color = new Color32(0, 0, 0, 0);
+
+            await Task.Delay(1000);
+
+            HorrorSystem.instance.EndHorrorSequence();
             willSleep = true;
 
         }
         else if (QuestSystem.instance.ISAllQuestsCompleted())
         {
             spriteRenderer.sprite = bedKid;
+            FindObjectOfType<PlayerController>().spriteRenderer.color = new Color32(0, 0, 0, 0);
+
+
             willSleep = true;
 
         }
 
-        await Task.Delay(2000);
+        await Task.Delay(1000);
         if (willSleep)
         {
             GameManager.instance.EndDay();

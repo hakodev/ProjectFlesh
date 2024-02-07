@@ -25,6 +25,8 @@ public class HorrorSystem : MonoBehaviour
 
     private void Start()
     {
+        GameManager.instance.OnDayBegin.AddListener(DayBegin);
+
     }
     private void Awake()
     {
@@ -34,9 +36,10 @@ public class HorrorSystem : MonoBehaviour
         }
         else { Destroy(this); };
 
-        GameManager.instance.OnDayBegin.AddListener(DayBegin);
 
     }
+
+    
 
 
     public void DayBegin(int dayCount)
@@ -70,6 +73,7 @@ public class HorrorSystem : MonoBehaviour
         horrorActive = false;
         OnHorrorEnd?.Invoke();
         insaneVolume.gameObject.SetActive(false);
+        followingFigure.SetActive(false);
 
     }
 

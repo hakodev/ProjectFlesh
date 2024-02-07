@@ -28,10 +28,21 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        SceneManager.sceneLoaded += Initialize;
         NewDay();
     }
+
+    public void Initialize(Scene scene, LoadSceneMode mode)
+    {
+        NewDay();
+
+    }
+
+
+   
+
     //we dont refresh the scene instead re initialize every task
-     void NewDay()
+    void NewDay()
     {
 
         dayCount++;

@@ -14,6 +14,12 @@ public class PlayerInteraction : MonoBehaviour
 
     public Transform holdTransform;
 
+    Animator anim;
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     private void Update()
     {
@@ -78,10 +84,13 @@ public class PlayerInteraction : MonoBehaviour
         {
             rb.isKinematic = true;
         }
+        anim.SetBool("isGrabbing", true);
         item.transform.DOMoveInTargetLocalSpace(holdTransform, Vector3.zero, 0.5f);
         item.transform.DORotate(Vector3.zero, 0.5f);
         currentlyHolding = item;
         await Task.Delay(500);
+        anim.SetBool("isGrabbing", false);
+
         if (currentlyHolding == item)
         {
             item.transform.parent = holdTransform;
