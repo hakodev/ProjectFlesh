@@ -8108,6 +8108,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7988394523181965785, guid: 57b772fb8dd4c204db9eebf67ec05f20, type: 3}
+      propertyPath: blackScreen
+      value: 
+      objectReference: {fileID: 1279671178}
+    - target: {fileID: 7988394523181965785, guid: 57b772fb8dd4c204db9eebf67ec05f20, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 145781568}
     - target: {fileID: 8030165439040411013, guid: 57b772fb8dd4c204db9eebf67ec05f20, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -9673,6 +9681,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SanityManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8465416564513885709, guid: 7dd99259770651446bf3fd30a1b574ce, type: 3}
+      propertyPath: blackScreen
+      value: 
+      objectReference: {fileID: 1279671178}
+    - target: {fileID: 8465416564513885709, guid: 7dd99259770651446bf3fd30a1b574ce, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 145781568}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

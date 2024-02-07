@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
-using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using DG.Tweening;
 public class SanityManager : MonoBehaviour
 {
+    [SerializeField] private PlayerController playerController;
+    [SerializeField] private Image blackScreen;
 
     public float sanity = 100;
     public float threat = 0;
@@ -70,7 +69,11 @@ public class SanityManager : MonoBehaviour
 
     public void Die()
     {
-
+        playerController.enabled = false;
+        AudioManager.Ins.PlaySFXOnce(AudioManager.Ins.PlayerLost);
+        blackScreen.DOFade(1f, AudioManager.Ins.PlayerLost.length).OnComplete(() => {
+            SceneManager.LoadScene(2);
+        });
     }
 
 }
