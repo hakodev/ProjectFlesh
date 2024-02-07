@@ -21,6 +21,8 @@ public class AudioManager : MonoBehaviour {
     [Header("Audio players")]
     [SerializeField] private AudioSource musicPlayer;
     [SerializeField] private AudioSource sfxPlayer;
+    [SerializeField] private AudioSource sfxPlayer2;
+    [SerializeField] private AudioSource sfxPlayer3;
 
     #endregion
 
@@ -52,11 +54,37 @@ public class AudioManager : MonoBehaviour {
         sfxPlayer.PlayOneShot(clip);
     }
 
+    public void PlaySFXOnce2(AudioClip clip) {
+        sfxPlayer2.Stop();
+        sfxPlayer2.loop = false;
+        sfxPlayer2.PlayOneShot(clip);
+    }
+
+    public void PlaySFXOnce3(AudioClip clip) {
+        sfxPlayer3.Stop();
+        sfxPlayer3.loop = false;
+        sfxPlayer3.PlayOneShot(clip);
+    }
+
     public void PlaySFXLoop(AudioClip clip) {
         sfxPlayer.Stop();
         sfxPlayer.loop = true;
         sfxPlayer.clip = clip;
         sfxPlayer.Play();
+    }
+
+    public void PlaySFXLoop2(AudioClip clip) {
+        sfxPlayer2.Stop();
+        sfxPlayer2.loop = true;
+        sfxPlayer2.clip = clip;
+        sfxPlayer2.Play();
+    }
+
+    public void PlaySFXLoop3(AudioClip clip) {
+        sfxPlayer3.Stop();
+        sfxPlayer3.loop = true;
+        sfxPlayer3.clip = clip;
+        sfxPlayer3.Play();
     }
 
     public void StopMusic() {
