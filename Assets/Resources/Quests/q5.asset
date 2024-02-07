@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: q5
   m_EditorClassIdentifier: 
   questID: 5
-  questDescription: Play Pretend
+  questDescription: Shoot Aliens
   completed: 0
   sanityChange: 15

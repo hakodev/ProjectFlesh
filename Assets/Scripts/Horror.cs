@@ -12,11 +12,16 @@ public class Horror : Interactable
     public Room location;
 
     public float drainRatioMult;
-    public float threatOnInspect;
     public float threatOnIgnore;
 
     public void Activate()
     {
+
+        if (location.roomName == "Bedroom")
+        {
+            FindObjectOfType<PlayerController>().transform.position = new Vector3(-14.94f, -20.5f, 0f);
+        }
+
         display.SetActive(true);
         active = true;
     }

@@ -21,7 +21,11 @@ public class PlayerController : MonoBehaviour {
     // Player starts at position x: -8.75 and y: -2.38
 
     private void Update() {
-        if (restrictMovement) return;
+        if (restrictMovement)
+        {
+            rb2d.velocity = Vector2.zero;
+            return;
+        }
         horizontalAxis = Input.GetAxisRaw("Horizontal");
 
         if (horizontalAxis < 0)
@@ -34,6 +38,11 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void FixedUpdate() {
+        if (restrictMovement)
+        {
+            rb2d.velocity = Vector2.zero;
+            return;
+        }
         rb2d.velocity = new Vector2(horizontalAxis * moveSpeed, rb2d.velocity.y);
     }
 

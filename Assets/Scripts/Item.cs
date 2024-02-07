@@ -27,6 +27,8 @@ public class Item : Interactable
     [HideInInspector]
     public Vector3 startPos;
 
+    public int neededID;
+
     private void Start()
     {
         if (TryGetComponent(out SpriteRenderer sr))
@@ -52,30 +54,32 @@ public class Item : Interactable
             //player interaction
             if (!itemData.holdable)
             {
-                if (animSprite != null)
+                if (animSprite != null && neededID==0)
                 {
-                    if (!isUsed)
-                    {
-                        isUsed = true;
-                        PlayerController pc = FindObjectOfType<PlayerController>();
-                        pc.gameObject.transform.position = animPos.position;
-                        Sprite s = pc.spriteRenderer.sprite;
-                        pc.GetComponent<Animator>().enabled = false;
-                        pc.spriteRenderer.sprite = animSprite;
-                        pc.restrictMovement = true;
-                        pc.rb2d.gravityScale = 0;
-                        Vector3 pcSize = pc.transform.localScale;
-                        pc.transform.localScale = Vector3.one;
-                        await Task.Delay(2500);
-                        isUsed = false;
-                        pc.transform.localScale = pcSize;
-                        pc.rb2d.gravityScale = 1;
 
-                        pc.GetComponent<Animator>().enabled = true;
+                    isUsed = true;
+                    PlayerController pc = FindObjectOfType<PlayerController>();
+                    pc.gameObject.transform.position = animPos.position;
+                    Sprite s = pc.spriteRenderer.sprite;
+                    pc.transform.localEulerAngles = Vector3.zero;
+                    pc.GetComponent<Animator>().enabled = false;
+                    pc.spriteRenderer.sprite = animSprite;
+                    pc.restrictMovement = true;
+                    pc.rb2d.gravityScale = 0;
+                    Vector3 pcSize = pc.transform.localScale;
+                    pc.transform.localScale = Vector3.one;
+                    pc.GetComponent<Collider2D>().enabled = false;
+                    await Task.Delay(2500);
 
-                        pc.restrictMovement = false;
-                        pc.spriteRenderer.sprite = s;
-                    }
+                    isUsed = false;
+                    pc.transform.localScale = pcSize;
+                    pc.rb2d.gravityScale = 1;
+                    pc.GetComponent<Collider2D>().enabled = true;
+
+                    pc.GetComponent<Animator>().enabled = true;
+
+                    pc.restrictMovement = false;
+                    pc.spriteRenderer.sprite = s;
                 }
 
                 QuestSystem.instance.CheckQuestAction(itemData.optionalActionID);
@@ -96,14 +100,32 @@ public class Item : Interactable
                     }
                     QuestSystem.instance.CheckQuestAction(interaction.ActionID);
 
-                    if (item.animSprite != null)
+                    Debug.Log(interaction.ActionID + " " + neededID);
+                    if (item.animSprite != null && interaction.ActionID == item.neededID)
                     {
+
+                        isUsed = true;
                         PlayerController pc = FindObjectOfType<PlayerController>();
                         pc.gameObject.transform.position = item.animPos.position;
                         Sprite s = pc.spriteRenderer.sprite;
+                        pc.transform.localEulerAngles = Vector3.zero;
+                        pc.GetComponent<Animator>().enabled = false;
                         pc.spriteRenderer.sprite = item.animSprite;
                         pc.restrictMovement = true;
-                        Task.Delay(1000);
+                        pc.rb2d.gravityScale = 0;
+                        Vector3 pcSize = pc.transform.localScale;
+                        pc.transform.localScale = Vector3.one;
+                        pc.GetComponent<Collider2D>().enabled = false;
+                        itemSprite.enabled = false;
+                        await Task.Delay(2500);
+                        itemSprite.enabled = true;
+                        isUsed = false;
+                        pc.transform.localScale = pcSize;
+                        pc.rb2d.gravityScale = 1;
+                        pc.GetComponent<Collider2D>().enabled = true;
+
+                        pc.GetComponent<Animator>().enabled = true;
+
                         pc.restrictMovement = false;
                         pc.spriteRenderer.sprite = s;
                     }
