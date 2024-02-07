@@ -18,6 +18,7 @@ public class RoomTeleporter : MonoBehaviour {
     [SerializeField] private Image blackScreen;
 
     [Header("Spawn points")]
+    [SerializeField] private Vector2 longBedroomSpawnPosition;
     [SerializeField] private Vector2 bedroomSpawnPosition;
     [SerializeField] private Vector2 kitchenSpawnPositionLeft;
     [SerializeField] private Vector2 kitchenSpawnPositionRight;
@@ -58,14 +59,19 @@ public class RoomTeleporter : MonoBehaviour {
     private void TeleportToRoom(Collider2D otherCollider) {
         Vector3 newYPosition = cameraFollower.transform.position;
 
-        if(otherCollider == bedroomToKitchen) {
+        if(otherCollider == kitchenToBedroom) {
+            if(HorrorSystem.instance.horrorActive) {
+                this.transform.position = longBedroomSpawnPosition;
+                newYPosition.y = cameraFollower.LongBedroomPositionY;
+            } else {
+                this.transform.position = bedroomSpawnPosition;
+                newYPosition.y = cameraFollower.BedroomPositionY;
+            }
+            kitchen.LeaveRoom();
+        } else if(otherCollider == bedroomToKitchen) {
             this.transform.position = kitchenSpawnPositionLeft;
             bedroom.LeaveRoom();
             newYPosition.y = cameraFollower.KitchenPositionY;
-        } else if(otherCollider == kitchenToBedroom) {
-            this.transform.position = bedroomSpawnPosition;
-            kitchen.LeaveRoom();
-            newYPosition.y = cameraFollower.BedroomPositionY;
         } else if(otherCollider == kitchenToLivingRoom) {
             this.transform.position = livingRoomSpawnPosition;
             kitchen.LeaveRoom();
