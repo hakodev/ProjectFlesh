@@ -22,4 +22,9 @@ public class MainMenu : MonoBehaviour {
         blackScreen.DOFade(1f, 1.5f);
         menuMusic.DOFade(0f, 1.5f).OnComplete(() => SceneManager.LoadScene(1));
     }
+
+    public void BackToMenu() {
+        blackScreen.DOFade(1f, 1.5f);
+        menuMusic.DOFade(0f, 1.5f).OnComplete(() => SceneManager.LoadScene(0));
+    }
 }
